@@ -908,4 +908,67 @@ footer {
         margin-bottom: 10px;
     }
 }
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 80px);
+        background-color: var(--primary-color);
+        transition: var(--transition);
+        z-index: 999;
+    }
+
+    nav.active {
+        left: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    nav ul li {
+        margin: 15px 0;
+    }
+
+    .hero-content h2 {
+        font-size: 30px;
+    }
+
+    .section-title {
+        font-size: 26px;
+        margin-top: 30px; /* Başlık üst boşluk */
+    }
+
+    /* 🔽 Misyon-Vizyon kısmı */
+    .mission-vision {
+        padding: 60px 20px 40px 20px; /* Üstten daha rahat */
+    }
+
+    .mission-vision-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .mission-box, .vision-box {
+        padding: 18px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .mission-box h3, .vision-box h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .mission-box p, .vision-box p {
+        font-size: 15px;
+    }
+}
 
