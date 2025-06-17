@@ -445,10 +445,11 @@ footer {
 
 .mission-box, .vision-box {
     background-color: var(--gray-color);
-    padding: 40px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    border-radius: 16px;
+    text-align: left;
+    box-shadow: 0 10px 25px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .icon-box {
