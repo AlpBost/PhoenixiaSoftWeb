@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- EmailJS için meta etiketleri -->
+    <meta name="description" content="PhoenixiaSoft ile iletişime geçin. Yazılım çözümleri için bize ulaşın.">
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html"><img src="images/Phoenixia_White.jpg" alt="PhoenixiaSoft Logo" height="80"></a>
+                <a href="index.html"><h1 style="color: var(--light-color);">PhoenixiaSoft</h1></a>
             </div>
             <nav>
                 <ul>
@@ -62,7 +64,7 @@
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h3>E-posta</h3>
-                            <p>info@phoenixiasoft.com</p>
+                            <p>phoenixiasoft@gmail.com</p>
                         </div>
                     </div>
                     
@@ -80,7 +82,7 @@
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/phoenixiasoft/" target="_blank"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -157,7 +159,7 @@
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/phoenixiasoft/" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -168,12 +170,46 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // EmailJS servis bilgileri
+            emailjs.init('NXBWkxKsuWCwkFXZ_'); // EmailJS hesabınızdan alacağınız public key
+        })();
+        
         // İletişim formu gönderimi
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Mesajınız gönderildi. En kısa sürede size dönüş yapacağız.');
-            this.reset();
+            
+            // Yükleniyor göstergesi
+            const btn = document.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = 'Gönderiliyor...';
+            btn.disabled = true;
+            
+            // Form verilerini hazırlama
+            const templateParams = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // EmailJS ile e-posta gönderme
+            emailjs.send('service_a5p1cvy', 'template_zvkhybe', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert('Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız.');
+                    document.getElementById('contactForm').reset();
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('Mesaj gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.');
+                })
+                .finally(function() {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                });
         });
     </script>
 </body>
