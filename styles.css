@@ -882,6 +882,7 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
 @media (max-width: 768px) {
     .mission-vision {
         padding: 50px 0;
@@ -894,7 +895,17 @@ footer {
 
     .mission-box, .vision-box {
         padding: 20px;
+        width: 100%; /* Tam genişlik */
+        box-sizing: border-box;
+    }
+
+    .mission-box p, .vision-box p {
         font-size: 15px;
+    }
+
+    .mission-box h3, .vision-box h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
     }
 }
 
