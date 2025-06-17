@@ -387,7 +387,7 @@ footer {
 /* Sayfa Başlık Bölümü */
 .page-header {
     background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://source.unsplash.com/random/1920x1080/?technology') no-repeat center center/cover;
-    padding: 150px 0 80px;
+    padding: 80px 0 50px;
     text-align: center;
 }
 
