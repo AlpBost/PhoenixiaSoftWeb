@@ -804,110 +804,22 @@ footer {
     .hero-content h2 {
         font-size: 36px;
     }
-    
+
     .hero-content p {
         font-size: 18px;
     }
-    
-    .about-grid, .contact-grid {
-        grid-template-columns: 1fr;
-    }
-    
+
+    .about-grid,
+    .contact-grid,
     .service-item {
         grid-template-columns: 1fr;
     }
-    
+
     .service-item .service-icon {
         padding: 30px;
     }
 }
 
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-    
-    nav {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        width: 80%;
-        height: calc(100vh - 80px);
-        background-color: var(--primary-color);
-        transition: var(--transition);
-        z-index: 999;
-    }
-    
-    nav.active {
-        left: 0;
-    }
-    
-    nav ul {
-        flex-direction: column;
-        padding: 30px;
-    }
-    
-    nav ul li {
-        margin: 15px 0;
-    }
-    
-    .hero-content h2 {
-        font-size: 30px;
-    }
-    
-    .section-title {
-        font-size: 28px;
-    }
-}
-
-@media (max-width: 576px) {
-    .hero-content h2 {
-        font-size: 24px;
-    }
-    
-    .hero-content p {
-        font-size: 16px;
-    }
-    
-    .btn {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-    
-    .feature-card, .service-card {
-        padding: 20px;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .mission-vision {
-        padding: 50px 0;
-    }
-
-    .mission-vision-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .mission-box, .vision-box {
-        padding: 20px;
-        width: 100%; /* Tam genişlik */
-        box-sizing: border-box;
-    }
-
-    .mission-box p, .vision-box p {
-        font-size: 15px;
-    }
-
-    .mission-box h3, .vision-box h3 {
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
-}
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -943,32 +855,63 @@ footer {
 
     .section-title {
         font-size: 26px;
-        margin-top: 30px; /* Başlık üst boşluk */
+        margin-top: 30px; /* Başlık yukarı yapışmasın */
     }
 
-    /* 🔽 Misyon-Vizyon kısmı */
+    /* 🔽 Misyon-Vizyon */
     .mission-vision {
-        padding: 60px 20px 40px 20px; /* Üstten daha rahat */
+        padding: 40px 15px; /* Daha dar padding */
     }
 
     .mission-vision-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 15px;
     }
 
-    .mission-box, .vision-box {
-        padding: 18px;
+    .mission-box,
+    .vision-box {
+        padding: 16px;
         width: 100%;
+        max-width: 100%;
         box-sizing: border-box;
+        font-size: 14px;
+        border-radius: 8px;
     }
 
-    .mission-box h3, .vision-box h3 {
-        font-size: 20px;
-        margin-bottom: 10px;
+    .mission-box h3,
+    .vision-box h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
     }
 
-    .mission-box p, .vision-box p {
-        font-size: 15px;
+    .mission-box p,
+    .vision-box p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content h2 {
+        font-size: 24px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .feature-card,
+    .service-card {
+        padding: 20px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
     }
 }
 
