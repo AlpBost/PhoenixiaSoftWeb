@@ -161,10 +161,11 @@ nav ul li a:hover::after, nav ul li a.active::after {
     color: var(--dark-color);
 }
 
-/* Özellikler Bölümü (Neden Biz Accordion) */
+/* Neden Biz - Accordion Stili (DEĞİŞTİRİLDİ) */
 .features {
     padding: 80px 0;
     background-color: var(--dark-color);
+    color: var(--light-color);
 }
 
 .section-title {
@@ -173,6 +174,11 @@ nav ul li a:hover::after, nav ul li a.active::after {
     margin-bottom: 60px;
     position: relative;
     padding-bottom: 20px;
+    font-weight: 700;
+}
+
+.section-title .gold-text {
+    color: var(--secondary-color);
 }
 
 .section-title::after {
@@ -195,51 +201,47 @@ nav ul li a:hover::after, nav ul li a.active::after {
     background-color: var(--gray-color);
     border-radius: 8px;
     margin-bottom: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
     overflow: hidden;
     transition: box-shadow 0.3s ease;
 }
 
 .accordion-item:hover {
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.accordion-item input[type="checkbox"] {
+    display: none;
 }
 
 .accordion-header {
-    display: flex;
-    align-items: center;
     cursor: pointer;
-    padding: 20px 25px;
+    padding: 20px 30px;
     font-size: 22px;
     color: var(--secondary-color);
     user-select: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
 }
 
-.accordion-header i {
-    margin-right: 15px;
-    font-size: 30px;
-    flex-shrink: 0;
+.accordion-header:hover {
+    background-color: rgba(212, 175, 55, 0.15);
+    color: var(--light-color);
 }
 
-/* İçerik başlangıçta gizli */
 .accordion-content {
     max-height: 0;
     overflow: hidden;
-    padding: 0 25px;
+    padding: 0 30px;
     color: #ccc;
     font-size: 16px;
     line-height: 1.5;
-    transition: max-height 0.3s ease, padding 0.3s ease;
+    transition: max-height 0.35s ease, padding 0.35s ease;
 }
 
-/* Checkbox işaretlenince içeriği göster */
 .accordion-item input[type="checkbox"]:checked ~ .accordion-content {
-    max-height: 200px; /* İçerik uzunluğuna göre ayarlayabilirsin */
-    padding: 15px 25px 25px;
-}
-
-/* Checkbox gizli */
-.accordion-item input[type="checkbox"] {
-    display: none;
+    max-height: 250px; /* İçeriğe göre ayarlanabilir */
+    padding: 20px 30px 30px;
 }
 
 /* Hizmetler Önizleme */
@@ -501,33 +503,28 @@ footer {
 
 .values-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
     gap: 30px;
 }
 
 .value-card {
     background-color: var(--gray-color);
-    padding: 30px;
     border-radius: 10px;
+    padding: 30px;
     text-align: center;
-    transition: var(--transition);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.value-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .value-card i {
-    font-size: 40px;
-    color: var(--secondary-color);
+    font-size: 48px;
     margin-bottom: 20px;
+    color: var(--secondary-color);
 }
 
-.value-card h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
+.value-card h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 
 .value-card p {
@@ -596,6 +593,7 @@ footer {
     margin-right: 10px;
 }
 
+/* Process Bölümü */
 .process {
     padding: 80px 0;
     background-color: var(--primary-color);
