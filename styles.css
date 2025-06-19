@@ -4,9 +4,10 @@
   --light: #f9f9f9;
   --dark: #111;
   --gray: #2a2a2a;
-  --transition: all 0.4s ease-in-out;
-  --radius: 12px;
-  --shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  --transition: all 0.35s ease;
+  --radius: 16px;
+  --shadow-light: rgba(212, 175, 55, 0.25);
+  --shadow-dark: rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -23,28 +24,29 @@ body {
   overflow-x: hidden;
 }
 
+/* Container */
 .container {
   width: 90%;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
 }
 
+/* Linkler */
 a {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
-/* =========================================
-   HEADER
-========================================= */
+/* HEADER */
 header {
   background-color: var(--primary);
-  padding: 18px 0;
+  padding: 20px 0;
   position: fixed;
-  width: 100%;
   top: 0;
-  z-index: 1000;
-  box-shadow: var(--shadow);
+  width: 100%;
+  z-index: 1100;
+  box-shadow: 0 4px 15px var(--shadow-dark);
   transition: var(--transition);
 }
 
@@ -57,142 +59,204 @@ header .container {
 .logo h1 {
   font-size: 28px;
   color: var(--secondary);
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
+/* Nav Menu */
 nav ul {
   display: flex;
-  gap: 30px;
+  gap: 32px;
+  list-style: none;
 }
 
 nav ul li a {
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 8px 0;
   position: relative;
-  padding: 5px 0;
-  transition: var(--transition);
+  transition: color 0.3s ease;
 }
 
-nav ul li a::before {
+nav ul li a::after {
   content: '';
   position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
+  bottom: -4px;
   left: 0;
+  width: 0;
+  height: 2.5px;
   background-color: var(--secondary);
-  transition: var(--transition);
+  transition: width 0.3s ease;
+  border-radius: 3px;
 }
 
-nav ul li a:hover::before {
-  width: 100%;
-}
-
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a.active {
   color: var(--secondary);
 }
 
-/* =========================================
-   HERO
-========================================= */
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  width: 100%;
+}
+
+/* HERO SECTION */
 .hero {
-  background: url('https://source.unsplash.com/random/1920x1080?code') center/cover no-repeat;
+  background: linear-gradient(rgba(10,10,10,0.8), rgba(10,10,10,0.8)),
+    url('https://source.unsplash.com/random/1920x1080?code') center/cover no-repeat;
   height: 90vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
+  padding: 0 20px;
   margin-top: 80px;
+  color: var(--secondary);
+  user-select: none;
 }
 
 .hero h2 {
-  font-size: 52px;
-  margin-bottom: 20px;
-  animation: fadeIn 1s ease forwards;
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 6px var(--shadow-dark);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 0.2s;
 }
 
 .hero p {
-  font-size: 20px;
-  max-width: 700px;
-  margin: 0 auto;
-  color: #ccc;
-  animation: fadeIn 1.5s ease forwards;
+  font-size: 22px;
+  max-width: 720px;
+  color: #ddd;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 0.5s;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* =========================================
-   ÖZELLİK KUTULARI (FEATURES)
-========================================= */
+/* FEATURES SECTION */
 .features {
-  padding: 100px 0;
   background-color: var(--primary);
+  padding: 100px 0 120px;
 }
 
 .features .section-title {
   text-align: center;
-  font-size: 36px;
-  margin-bottom: 60px;
+  font-size: 38px;
   color: var(--secondary);
+  font-weight: 700;
+  margin-bottom: 70px;
+  letter-spacing: 1.2px;
+  position: relative;
 }
 
+.features .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 3.5px;
+  background-color: var(--secondary);
+  border-radius: 10px;
+}
+
+/* Feature Cards Slider */
 .feature-slider {
   display: flex;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 20px;
+  gap: 24px;
   padding-bottom: 20px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
+.feature-slider::-webkit-scrollbar {
+  height: 8px;
+}
+
+.feature-slider::-webkit-scrollbar-track {
+  background: var(--gray);
+  border-radius: 10px;
+}
+
+.feature-slider::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.feature-slider::-webkit-scrollbar-thumb:hover {
+  background-color: #c9a830;
+}
+
+/* Individual Feature Card */
 .feature-card {
-  flex: 0 0 300px;
+  flex: 0 0 320px;
   background-color: var(--gray);
-  padding: 25px;
   border-radius: var(--radius);
+  padding: 28px 30px;
+  box-shadow: 0 10px 28px var(--shadow-light);
   scroll-snap-align: start;
-  transition: transform 0.3s ease;
-  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
   opacity: 0;
   animation: slideUp 0.6s ease forwards;
 }
 
-.feature-card:nth-child(1) { animation-delay: 0.1s; }
-.feature-card:nth-child(2) { animation-delay: 0.3s; }
-.feature-card:nth-child(3) { animation-delay: 0.5s; }
+.feature-card:nth-child(1) {
+  animation-delay: 0.15s;
+}
+.feature-card:nth-child(2) {
+  animation-delay: 0.35s;
+}
+.feature-card:nth-child(3) {
+  animation-delay: 0.55s;
+}
 
 .feature-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 20px 40px var(--shadow-light);
 }
 
 .feature-card i {
-  font-size: 36px;
+  font-size: 38px;
   color: var(--secondary);
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .feature-card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 22px;
+  margin-bottom: 12px;
+  font-weight: 700;
 }
 
 .feature-card p {
   font-size: 15px;
-  color: #bbb;
+  color: #ccc;
+  line-height: 1.5;
 }
 
-@keyframes slideUp {
-  from { transform: translateY(40px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-/* =========================================
-   HİZMETLER (SERVICES)
-========================================= */
+/* SERVICES SECTION */
 .services {
-  padding: 100px 0;
   background-color: var(--dark);
+  padding: 100px 0;
 }
 
 .services-grid {
@@ -204,83 +268,118 @@ nav ul li a:hover {
 .service-box {
   background-color: var(--gray);
   border-radius: var(--radius);
-  padding: 30px;
+  padding: 30px 25px;
   text-align: center;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
   transition: var(--transition);
-  box-shadow: var(--shadow);
+  cursor: pointer;
 }
 
 .service-box:hover {
-  transform: translateY(-8px);
-  background-color: #1c1c1c;
+  background-color: #1d1d1d;
+  box-shadow: 0 16px 40px rgba(212, 175, 55, 0.4);
+  transform: translateY(-10px);
 }
 
 .service-box i {
-  font-size: 40px;
+  font-size: 42px;
   color: var(--secondary);
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
 .service-box h3 {
   font-size: 22px;
+  font-weight: 700;
   margin-bottom: 10px;
 }
 
 .service-box p {
-  font-size: 14px;
+  font-size: 15px;
   color: #bbb;
+  line-height: 1.4;
 }
 
-/* =========================================
-   BUTONLAR
-========================================= */
+/* BUTTONS */
 .btn {
   display: inline-block;
   background-color: var(--secondary);
   color: var(--dark);
-  padding: 12px 28px;
-  border-radius: 30px;
-  font-weight: bold;
-  letter-spacing: 1px;
+  padding: 14px 32px;
+  border-radius: 36px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
   border: none;
   transition: var(--transition);
+  box-shadow: 0 6px 12px rgba(212, 175, 55, 0.4);
+  cursor: pointer;
+  user-select: none;
 }
 
 .btn:hover {
   background-color: transparent;
   color: var(--secondary);
   border: 2px solid var(--secondary);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.6);
 }
 
-/* =========================================
-   FOOTER
-========================================= */
+/* FOOTER */
 footer {
   background-color: var(--primary);
-  padding: 80px 0 20px;
+  padding: 80px 0 25px;
   text-align: center;
+  color: #999;
+  user-select: none;
 }
 
 footer h2 {
-  font-size: 20px;
+  font-size: 22px;
   color: var(--secondary);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  font-weight: 700;
 }
 
 footer p {
   font-size: 14px;
-  color: #aaa;
+  color: #888;
 }
 
+/* Animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+/* Scrollbar Styling for All Scrollable Elements */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  border-radius: 10px;
+  background: var(--gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #c9a830;
+}
+
+/* Responsive Design - Tablet and Mobile will be handled separately on request */
+
+/* Tablet ve altı (992px ve altı) */
 @media (max-width: 992px) {
   header .container {
     flex-direction: column;
-    gap: 15px;
-  }
-
-  .menu-toggle {
-    display: block;
+    gap: 18px;
   }
 
   nav {
@@ -289,10 +388,10 @@ footer p {
     left: -100%;
     width: 75%;
     height: calc(100vh - 70px);
-    background-color: var(--primary-color);
+    background-color: var(--primary);
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.8);
+    padding-top: 50px;
     transition: left 0.4s ease-in-out;
-    padding-top: 40px;
-    box-shadow: 4px 0 10px rgba(0,0,0,0.7);
     z-index: 1500;
   }
 
@@ -302,272 +401,172 @@ footer p {
 
   nav ul {
     flex-direction: column;
-    gap: 20px;
-    padding-left: 25px;
+    gap: 25px;
+    padding-left: 30px;
   }
 
   nav ul li a {
     font-size: 18px;
-    padding: 12px 0;
+    padding: 14px 0;
     display: block;
   }
-  
-  nav ul li a:hover, nav ul li a.active {
-    color: var(--secondary-color);
+
+  nav ul li a:hover,
+  nav ul li a.active {
+    color: var(--secondary);
   }
 
-  /* Hero Bölümü */
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    font-size: 28px;
+    color: var(--secondary);
+    user-select: none;
+  }
+
+  /* HERO */
   .hero {
     height: 60vh;
-    padding: 0 20px;
+    padding: 0 25px;
   }
 
-  .hero-content h2 {
-    font-size: 28px;
-    animation: slideUp 0.8s ease forwards;
-    opacity: 0;
-    animation-delay: 0.2s;
+  .hero h2 {
+    font-size: 36px;
+    animation-delay: 0.3s;
   }
 
-  .hero-content p {
+  .hero p {
     font-size: 16px;
-    color: #bbb;
-    animation: slideUp 0.8s ease forwards;
-    animation-delay: 0.4s;
-    opacity: 0;
+    animation-delay: 0.5s;
   }
 
-  .btn {
-    font-size: 14px;
-    padding: 10px 25px;
-  }
-
-  /* Özellikler Bölümü */
-  .features {
-    padding: 50px 15px;
-  }
-
+  /* Özellik Kartları Slider */
   .feature-slider {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    gap: 20px;
+    gap: 18px;
     padding-bottom: 15px;
   }
 
-  .feature-slider::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  .feature-slider::-webkit-scrollbar-thumb {
-    background-color: var(--secondary-color);
-    border-radius: 10px;
-  }
-
-  .feature-slider::-webkit-scrollbar-track {
-    background: var(--gray-color);
-  }
-
   .feature-card {
-    min-width: 250px;
-    flex-shrink: 0;
-    scroll-snap-align: center;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    min-width: 270px;
+    padding: 22px 20px;
   }
 
-  /* Hizmetler Önizleme */
-  .services-preview {
-    padding: 50px 15px;
-  }
-
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-
-  /* CTA Bölümü */
-  .cta {
-    padding: 70px 15px;
-  }
-
-  .cta h2 {
-    font-size: 26px;
-  }
-
-  .cta p {
-    font-size: 14px;
-    max-width: 90%;
-    margin: 0 auto;
-  }
-
-  /* Footer */
-  footer {
-    padding: 50px 15px 30px;
-  }
-
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-
-  .social-icons {
-    justify-content: flex-start;
-  }
-
-  /* Sayfa Başlık Bölümü */
-  .page-header {
-    padding: 100px 15px 60px;
-  }
-
-  .page-header h1 {
+  .feature-card i {
     font-size: 32px;
+    margin-bottom: 16px;
   }
 
-  .page-header p {
-    font-size: 14px;
-  }
-
-  /* Hakkımızda */
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-
-  /* Misyon-Vizyon */
-  .mission-vision {
-    padding: 40px 15px;
-  }
-
-  .mission-box, .vision-box {
-    padding: 20px;
-    font-size: 15px;
-  }
-
-  /* Değerler */
-  .values-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* Takım */
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .team-member {
-    max-width: 300px;
-    margin: 0 auto;
-  }
-
-  /* Hizmetler Sayfası */
-  .services {
-    padding: 50px 15px;
-  }
-
-  .service-item {
-    grid-template-columns: 1fr;
-  }
-
-  .service-item .service-icon {
-    padding: 30px 0;
-  }
-
-  .service-content {
-    padding: 25px 15px;
-  }
-
-  .service-content h2 {
-    font-size: 22px;
-  }
-
-  .service-content p {
-    font-size: 14px;
-  }
-
-  .service-features {
-    grid-template-columns: 1fr;
-  }
-
-  /* Süreçler */
-  .process {
-    padding: 50px 15px;
-  }
-
-  .process-steps {
-    max-width: 100%;
-  }
-
-  .process-step {
-    flex-direction: column;
-    margin-bottom: 40px;
-  }
-
-  .step-number {
-    margin-bottom: 15px;
-  }
-
-  .step-content h3 {
-    font-size: 20px;
-  }
-
-  .step-content p {
-    font-size: 14px;
-  }
-
-  /* İletişim Sayfası */
-  .contact-content {
-    padding: 50px 15px;
-  }
-
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .info-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .info-item i {
-    margin-bottom: 10px;
-  }
-
-  .form-group input, .form-group textarea {
-    font-size: 14px;
-  }
-
-  .map {
-    padding: 50px 15px;
-  }
-}
-
-/* Daha Küçük Ekranlar için Optimize */
-@media (max-width: 576px) {
-  .hero-content h2 {
-    font-size: 22px;
-  }
-
-  .hero-content p {
-    font-size: 14px;
-  }
-
-  .btn {
-    font-size: 13px;
-    padding: 8px 20px;
-  }
-
-  .feature-card {
-    min-width: 220px;
-  }
-
-  .team-member h3 {
+  .feature-card h3 {
     font-size: 18px;
   }
 
-  .team-member .position {
+  .feature-card p {
     font-size: 14px;
   }
 
-  .service-content h2 {
+  /* Hizmetler Bölümü Grid */
+  .services-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .service-box {
+    padding: 28px 20px;
+  }
+
+  .service-box i {
+    font-size: 36px;
+  }
+
+  .service-box h3 {
     font-size: 20px;
+  }
+
+  .service-box p {
+    font-size: 14px;
+  }
+
+  /* Butonlar */
+  .btn {
+    font-size: 15px;
+    padding: 12px 28px;
+  }
+}
+
+/* Telefonlar için (576px ve altı) */
+@media (max-width: 576px) {
+  /* Menü Toggle */
+  .menu-toggle {
+    font-size: 30px;
+  }
+
+  nav ul {
+    padding-left: 20px;
+  }
+
+  /* Hero */
+  .hero {
+    height: 50vh;
+  }
+
+  .hero h2 {
+    font-size: 26px;
+  }
+
+  .hero p {
+    font-size: 14px;
+    max-width: 90%;
+  }
+
+  /* Özellik Kartları */
+  .feature-slider {
+    gap: 16px;
+    padding-bottom: 12px;
+  }
+
+  .feature-card {
+    min-width: 240px;
+    padding: 18px 15px;
+  }
+
+  .feature-card i {
+    font-size: 28px;
+    margin-bottom: 14px;
+  }
+
+  .feature-card h3 {
+    font-size: 16px;
+  }
+
+  .feature-card p {
+    font-size: 13px;
+  }
+
+  /* Hizmetler Bölümü */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .service-box {
+    padding: 24px 18px;
+  }
+
+  .service-box i {
+    font-size: 32px;
+  }
+
+  .service-box h3 {
+    font-size: 18px;
+  }
+
+  .service-box p {
+    font-size: 13px;
+  }
+
+  /* Butonlar */
+  .btn {
+    font-size: 14px;
+    padding: 10px 25px;
   }
 }
