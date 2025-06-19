@@ -161,8 +161,7 @@ nav ul li a:hover::after, nav ul li a.active::after {
     color: var(--dark-color);
 }
 
-/* Özellikler Bölümü */
-/* --- BURASI DEĞİŞTİRİLDİ (Neden Biz Yatay Kaydırmalı Kartlar) --- */
+/* Neden Biz? Bölümü - Yatay Kaydırmalı Kartlar */
 .features {
     padding: 80px 0;
     background-color: var(--dark-color);
@@ -170,13 +169,14 @@ nav ul li a:hover::after, nav ul li a.active::after {
     scroll-behavior: smooth; /* Kaydırma animasyonu */
     -webkit-overflow-scrolling: touch; /* Mobilde daha yumuşak kaydırma */
     scroll-snap-type: x mandatory; /* Kaydırma snap efekti */
+    white-space: nowrap; /* Satır içi kartların yanyana durması için */
 }
 
 .feature-grid {
-    display: flex; /* Grid yerine flex kullanılıyor */
+    display: flex; /* Yatay kaydırma için flex */
     gap: 30px;
+    padding-left: 20px;
     padding-bottom: 10px;
-    min-width: max-content; /* İçeriğe göre genişlik */
 }
 
 .feature-card {
@@ -187,7 +187,9 @@ nav ul li a:hover::after, nav ul li a.active::after {
     text-align: center;
     transition: var(--transition);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    scroll-snap-align: start; /* Snap hizalama */
+    scroll-snap-align: start; /* Kaydırma snap hizalama */
+    display: inline-block; /* Yatayda düzgün yerleşim için */
+    white-space: normal; /* Kart içi metin sarması için */
 }
 
 .feature-card:hover {
