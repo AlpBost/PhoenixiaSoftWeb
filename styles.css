@@ -244,7 +244,6 @@ nav ul li a:hover::after, nav ul li a.active::after {
 }
 
 /* Hizmetler Önizleme */
-
 .services-preview {
     padding: 80px 0;
     background-color: var(--primary-color);
@@ -252,59 +251,45 @@ nav ul li a:hover::after, nav ul li a.active::after {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-bottom: 50px;
 }
 
 .service-card {
     background-color: var(--gray-color);
-    border-radius: 16px;
+    border-radius: 10px;
     overflow: hidden;
     transition: var(--transition);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
-    padding: 28px 20px 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .service-icon {
-    background: linear-gradient(135deg, #b9962f, #d4af37);
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 22px;
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.6);
+    background-color: var(--dark-color);
+    padding: 30px;
+    text-align: center;
 }
 
 .service-icon i {
-    font-size: 40px;
-    color: var(--dark-color);
+    font-size: 50px;
+    color: var(--secondary-color);
 }
 
 .service-card h3 {
     font-size: 22px;
-    margin-bottom: 14px;
+    padding: 20px 20px 10px;
     text-align: center;
-    color: var(--secondary-color);
 }
 
 .service-card p {
-    padding: 0 15px;
+    padding: 0 20px 20px;
     color: #ccc;
     text-align: center;
-    font-size: 15px;
-    line-height: 1.5;
 }
 
 .services-cta {
@@ -442,7 +427,6 @@ footer {
     max-width: 700px;
     margin: 0 auto;
 }
-
 /* Hakkımızda Bölümü */
 .about-content {
     padding: 80px 0;
