@@ -161,55 +161,85 @@ nav ul li a:hover::after, nav ul li a.active::after {
     color: var(--dark-color);
 }
 
-/* Neden Biz? Bölümü - Yatay Kaydırmalı Kartlar */
+/* Özellikler Bölümü (Neden Biz Accordion) */
 .features {
     padding: 80px 0;
     background-color: var(--dark-color);
-    overflow-x: auto; /* Yatay kaydırma aktif */
-    scroll-behavior: smooth; /* Kaydırma animasyonu */
-    -webkit-overflow-scrolling: touch; /* Mobilde daha yumuşak kaydırma */
-    scroll-snap-type: x mandatory; /* Kaydırma snap efekti */
-    white-space: nowrap; /* Satır içi kartların yanyana durması için */
 }
 
-.feature-grid {
-    display: flex; /* Yatay kaydırma için flex */
-    gap: 30px;
-    padding-left: 20px;
-    padding-bottom: 10px;
-}
-
-.feature-card {
-    flex: 0 0 300px; /* Sabit genişlik */
-    background-color: var(--gray-color);
-    padding: 30px;
-    border-radius: 10px;
+.section-title {
     text-align: center;
-    transition: var(--transition);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    scroll-snap-align: start; /* Kaydırma snap hizalama */
-    display: inline-block; /* Yatayda düzgün yerleşim için */
-    white-space: normal; /* Kart içi metin sarması için */
+    font-size: 36px;
+    margin-bottom: 60px;
+    position: relative;
+    padding-bottom: 20px;
 }
 
-.feature-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--secondary-color);
 }
 
-.feature-card i {
-    font-size: 40px;
-    color: var(--secondary-color);
-    margin-bottom: 20px;
+.accordion {
+    max-width: 700px;
+    margin: 0 auto;
 }
 
-.feature-card h3 {
-    font-size: 22px;
+.accordion-item {
+    background-color: var(--gray-color);
+    border-radius: 8px;
     margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
 }
 
-.feature-card p {
+.accordion-item:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.accordion-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px 25px;
+    font-size: 22px;
+    color: var(--secondary-color);
+    user-select: none;
+}
+
+.accordion-header i {
+    margin-right: 15px;
+    font-size: 30px;
+    flex-shrink: 0;
+}
+
+/* İçerik başlangıçta gizli */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 25px;
     color: #ccc;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+/* Checkbox işaretlenince içeriği göster */
+.accordion-item input[type="checkbox"]:checked ~ .accordion-content {
+    max-height: 200px; /* İçerik uzunluğuna göre ayarlayabilirsin */
+    padding: 15px 25px 25px;
+}
+
+/* Checkbox gizli */
+.accordion-item input[type="checkbox"] {
+    display: none;
 }
 
 /* Hizmetler Önizleme */
@@ -500,77 +530,8 @@ footer {
     margin-bottom: 15px;
 }
 
-.team {
-    padding: 80px 0;
-    background-color: var(--primary-color);
-}
-
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.team-member {
-    background-color: var(--gray-color);
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: var(--transition);
-}
-
-.team-member:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.member-image {
-    overflow: hidden;
-}
-
-.member-image img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    transition: var(--transition);
-}
-
-.team-member:hover .member-image img {
-    transform: scale(1.1);
-}
-
-.team-member h3 {
-    font-size: 22px;
-    margin: 20px 0 5px;
-}
-
-.position {
-    color: var(--secondary-color);
-    margin-bottom: 15px;
-}
-
-.member-social {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 20px;
-}
-
-.member-social a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    background-color: var(--dark-color);
-    border-radius: 50%;
-    margin: 0 5px;
-    transition: var(--transition);
-}
-
-.member-social a:hover {
-    background-color: var(--secondary-color);
-    color: var(--dark-color);
+.value-card p {
+    color: #ccc;
 }
 
 /* Hizmetler Sayfası */
@@ -904,14 +865,4 @@ footer {
     .footer-content {
         grid-template-columns: 1fr;
     }
-}
-
-/* Neden Biz İçin Kaydırma Çubuğu (İsteğe bağlı) */
-.features::-webkit-scrollbar {
-    height: 8px;
-}
-
-.features::-webkit-scrollbar-thumb {
-    background-color: var(--secondary-color);
-    border-radius: 10px;
 }
