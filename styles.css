@@ -41,7 +41,7 @@ ul {
     color: var(--secondary-color);
 }
 
-/* Header Stili */
+/* Header */
 header {
     background-color: var(--primary-color);
     padding: 20px 0;
@@ -107,7 +107,9 @@ nav ul li a:hover::after, nav ul li a.active::after {
 
 /* Hero Bölümü */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://source.unsplash.com/random/1920x1080/?technology') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+        url('https://source.unsplash.com/random/1920x1080/?technology')
+        no-repeat center center/cover;
     height: 80vh;
     display: flex;
     align-items: center;
@@ -161,27 +163,26 @@ nav ul li a:hover::after, nav ul li a.active::after {
     color: var(--dark-color);
 }
 
-/* Neden Biz - Accordion Stili (DEĞİŞTİRİLDİ) */
-.features {
+/* 🎯 NEDEN BİZ – SLIDER */
+.features-slider {
     padding: 80px 0;
     background-color: var(--dark-color);
-    color: var(--light-color);
 }
 
-.section-title {
+.features-slider .section-title {
     text-align: center;
     font-size: 36px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     position: relative;
     padding-bottom: 20px;
     font-weight: 700;
 }
 
-.section-title .gold-text {
+.features-slider .section-title .gold-text {
     color: var(--secondary-color);
 }
 
-.section-title::after {
+.features-slider .section-title::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -192,57 +193,54 @@ nav ul li a:hover::after, nav ul li a.active::after {
     background-color: var(--secondary-color);
 }
 
-.accordion {
-    max-width: 700px;
-    margin: 0 auto;
+.slider-wrapper {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
 }
 
-.accordion-item {
-    background-color: var(--gray-color);
-    border-radius: 8px;
-    margin-bottom: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    overflow: hidden;
-    transition: box-shadow 0.3s ease;
-}
-
-.accordion-item:hover {
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-}
-
-.accordion-item input[type="checkbox"] {
+.slider-wrapper::-webkit-scrollbar {
     display: none;
 }
 
-.accordion-header {
-    cursor: pointer;
-    padding: 20px 30px;
-    font-size: 22px;
+.slider {
+    display: flex;
+    gap: 30px;
+}
+
+.feature-card {
+    flex: 0 0 280px;
+    background-color: var(--gray-color);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    scroll-snap-align: start;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card i {
+    font-size: 40px;
     color: var(--secondary-color);
-    user-select: none;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
 }
 
-.accordion-header:hover {
-    background-color: rgba(212, 175, 55, 0.15);
-    color: var(--light-color);
+.feature-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
 }
 
-.accordion-content {
-    background-color: #000;
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 30px;
+.feature-card p {
     color: #ccc;
     font-size: 16px;
-    line-height: 1.5;
-    transition: max-height 0.35s ease, padding 0.35s ease;
-}
-
-.accordion-item input[type="checkbox"]:checked ~ .accordion-content {
-    max-height: 250px; /* İçeriğe göre ayarlanabilir */
-    padding: 20px 30px 30px;
 }
 
 /* Hizmetler Önizleme */
@@ -300,7 +298,9 @@ nav ul li a:hover::after, nav ul li a.active::after {
 
 /* CTA Bölümü */
 .cta {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://source.unsplash.com/random/1920x1080/?meeting') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+        url('https://source.unsplash.com/random/1920x1080/?meeting')
+        no-repeat center center/cover;
     padding: 100px 0;
     text-align: center;
 }
@@ -315,8 +315,7 @@ nav ul li a:hover::after, nav ul li a.active::after {
     margin-bottom: 30px;
     color: #ccc;
     max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 /* Footer */
@@ -408,9 +407,11 @@ footer {
     border-top: 1px solid var(--gray-color);
 }
 
-/* Sayfa Başlık Bölümü */
+/* Sayfa Başlığı Bölümü */
 .page-header {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://source.unsplash.com/random/1920x1080/?technology') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+        url('https://source.unsplash.com/random/1920x1080/?technology')
+        no-repeat center center/cover;
     padding: 150px 0 80px;
     text-align: center;
 }
@@ -427,7 +428,7 @@ footer {
     margin: 0 auto;
 }
 
-/* Hakkımızda Sayfası */
+/* Hakkımızda Bölümü */
 .about-content {
     padding: 80px 0;
     background-color: var(--dark-color);
@@ -472,7 +473,7 @@ footer {
     padding: 32px;
     border-radius: 16px;
     text-align: left;
-    box-shadow: 0 10px 25px var(--shadow-color);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -532,7 +533,7 @@ footer {
     color: #ccc;
 }
 
-/* Hizmetler Sayfası */
+/* Hizmetler Bölümü */
 .services {
     padding: 80px 0;
     background-color: var(--dark-color);
@@ -546,7 +547,7 @@ footer {
     background-color: var(--gray-color);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .service-item .service-icon {
@@ -580,7 +581,7 @@ footer {
 .service-features {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
     gap: 15px;
 }
 
@@ -654,7 +655,7 @@ footer {
     color: #ccc;
 }
 
-/* İletişim Sayfası */
+/* İletişim Bölümü */
 .contact-content {
     padding: 80px 0;
     background-color: var(--dark-color);
@@ -747,120 +748,84 @@ footer {
 .map-container {
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* Responsive Tasarım */
+/* Responsive */
 @media (max-width: 992px) {
     .hero-content h2 {
         font-size: 36px;
     }
-
     .hero-content p {
         font-size: 18px;
     }
-
-    .about-grid,
-    .contact-grid,
-    .service-item {
+    .about-grid, .contact-grid, .service-item {
         grid-template-columns: 1fr;
     }
-
     .service-item .service-icon {
         padding: 30px;
     }
 }
 
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-
+    .menu-toggle { display: block; }
     nav {
         position: fixed;
-        top: 80px;
-        left: -100%;
+        top: 80px; left: -100%;
         width: 80%;
         height: calc(100vh - 80px);
         background-color: var(--primary-color);
         transition: var(--transition);
         z-index: 999;
     }
-
-    nav.active {
-        left: 0;
-    }
-
+    nav.active { left: 0; }
     nav ul {
         flex-direction: column;
         padding: 30px;
     }
-
-    nav ul li {
-        margin: 15px 0;
-    }
-
-    .hero-content h2 {
-        font-size: 30px;
-    }
-
+    nav ul li { margin: 15px 0; }
+    .hero-content h2 { font-size: 30px; }
     .section-title {
         font-size: 26px;
-        margin-top: 30px; /* Başlık yukarı yapışmasın */
+        margin-top: 30px;
     }
-
-    /* 🔽 Misyon-Vizyon */
+    .feature-card {
+        flex: 0 0 230px;
+        padding: 25px;
+    }
     .mission-vision {
-        padding: 40px 15px; /* Daha dar padding */
+        padding: 40px 15px;
     }
-
     .mission-vision-grid {
         grid-template-columns: 1fr;
         gap: 15px;
     }
-
-    .mission-box,
-    .vision-box {
+    .mission-box, .vision-box {
         padding: 16px;
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
         font-size: 14px;
         border-radius: 8px;
     }
-
-    .mission-box h3,
-    .vision-box h3 {
+    .mission-box h3, .vision-box h3 {
         font-size: 18px;
         margin-bottom: 8px;
     }
-
-    .mission-box p,
-    .vision-box p {
+    .mission-box p, .vision-box p {
         font-size: 14px;
         line-height: 1.5;
     }
 }
 
 @media (max-width: 576px) {
-    .hero-content h2 {
-        font-size: 24px;
-    }
-
-    .hero-content p {
-        font-size: 16px;
-    }
-
+    .hero-content h2 { font-size: 24px; }
+    .hero-content p { font-size: 16px; }
     .btn {
         padding: 10px 20px;
         font-size: 14px;
     }
-
-    .feature-card,
-    .service-card {
+    .feature-card {
+        flex: 0 0 80%;
         padding: 20px;
     }
-
     .footer-content {
         grid-template-columns: 1fr;
     }
