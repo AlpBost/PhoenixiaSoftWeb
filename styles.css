@@ -1,624 +1,711 @@
 :root {
-    --primary-color: #000000; /* Siyah */
-    --secondary-color: #D4AF37; /* Altın Sarısı */
-    --light-color: #f4f4f4;
-    --dark-color: #111;
-    --gray-color: #333;
-    --transition: all 0.3s ease;
-    --border-radius: 12px;
+  --primary: #0a0a0a;
+  --secondary: #d4af37;
+  --light: #f9f9f9;
+  --dark: #111;
+  --gray: #2a2a2a;
+  --transition: all 0.4s ease-in-out;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
-/* Reset ve genel ayarlar */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: var(--light-color);
-    background-color: var(--dark-color);
-    overflow-x: hidden; /* Yatay kaydırma kontrolü */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--dark);
+  color: var(--light);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
 }
 
 a {
-    text-decoration: none;
-    color: var(--light-color);
+  color: inherit;
+  text-decoration: none;
 }
 
-ul {
-    list-style: none;
-}
-
-.gold-text {
-    color: var(--secondary-color);
-}
-
-/* Header */
+/* =========================================
+   HEADER
+========================================= */
 header {
-    background-color: var(--primary-color);
-    padding: 20px 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--primary);
+  padding: 18px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
 }
 
 header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo h1 {
-    font-size: 28px;
-    font-weight: 700;
-    color: white;
+  font-size: 28px;
+  color: var(--secondary);
+  letter-spacing: 1px;
 }
 
 nav ul {
-    display: flex;
-}
-
-nav ul li {
-    margin-left: 30px;
+  display: flex;
+  gap: 30px;
 }
 
 nav ul li a {
-    font-weight: 500;
-    padding: 10px 0;
-    position: relative;
-    transition: var(--transition);
+  font-weight: 500;
+  position: relative;
+  padding: 5px 0;
+  transition: var(--transition);
 }
 
-nav ul li a:hover, nav ul li a.active {
-    color: var(--secondary-color);
+nav ul li a::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--secondary);
+  transition: var(--transition);
 }
 
-nav ul li a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--secondary-color);
-    transition: var(--transition);
+nav ul li a:hover::before {
+  width: 100%;
 }
 
-nav ul li a:hover::after, nav ul li a.active::after {
-    width: 100%;
+nav ul li a:hover {
+  color: var(--secondary);
 }
 
-.menu-toggle {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: var(--light-color);
-}
-
-/* Hero Bölümü */
+/* =========================================
+   HERO
+========================================= */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://source.unsplash.com/random/1920x1080/?technology') no-repeat center center/cover;
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin-top: 80px;
+  background: url('https://source.unsplash.com/random/1920x1080?code') center/cover no-repeat;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 80px;
 }
 
-.hero-content {
-    max-width: 750px;
-    margin: 0 auto;
+.hero h2 {
+  font-size: 52px;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease forwards;
 }
 
-.hero-content h2 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    line-height: 1.2;
+.hero p {
+  font-size: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #ccc;
+  animation: fadeIn 1.5s ease forwards;
 }
 
-.hero-content p {
-    font-size: 20px;
-    margin-bottom: 30px;
-    color: #ccc;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.btn {
-    display: inline-block;
-    background-color: var(--secondary-color);
-    color: var(--dark-color);
-    padding: 12px 30px;
-    border-radius: 30px;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 1px;
-    transition: var(--transition);
-    border: 2px solid var(--secondary-color);
-}
-
-.btn:hover {
-    background-color: transparent;
-    color: var(--secondary-color);
-}
-
-.btn-light {
-    background-color: transparent;
-    color: var(--light-color);
-    border: 2px solid var(--light-color);
-}
-
-.btn-light:hover {
-    background-color: var(--light-color);
-    color: var(--dark-color);
-}
-
-/* Özellikler Bölümü (Features) */
+/* =========================================
+   ÖZELLİK KUTULARI (FEATURES)
+========================================= */
 .features {
-    padding: 80px 0;
-    background-color: var(--dark-color);
+  padding: 100px 0;
+  background-color: var(--primary);
 }
 
-.section-title {
-    text-align: center;
-    font-size: 36px;
-    margin-bottom: 60px;
-    position: relative;
-    padding-bottom: 20px;
-    color: var(--light-color);
+.features .section-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 60px;
+  color: var(--secondary);
 }
 
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background-color: var(--secondary-color);
-}
-
-/* ===============================
-   ÖZELLİK KUTULARI (Features Cards) 
-   Arka arkaya yatay kaydırılabilir kartlar
-================================= */
 .feature-slider {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 25px;
-    padding-bottom: 20px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--secondary-color) transparent;
-}
-
-.feature-slider::-webkit-scrollbar {
-    height: 8px;
-}
-
-.feature-slider::-webkit-scrollbar-thumb {
-    background-color: var(--secondary-color);
-    border-radius: 10px;
-}
-
-.feature-slider::-webkit-scrollbar-track {
-    background: transparent;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 30px; /* Aralar daha geniş */
+  padding-bottom: 20px;
 }
 
 .feature-card {
-    flex: 0 0 280px;
-    background-color: var(--gray-color);
-    padding: 25px;
-    border-radius: var(--border-radius);
-    scroll-snap-align: start;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    cursor: pointer;
-    opacity: 0;
-    animation: fadeSlideIn 0.6s ease forwards;
+  flex: 0 0 260px; /* Küçültüldü */
+  background-color: var(--gray);
+  padding: 20px;
+  border-radius: var(--radius);
+  scroll-snap-align: start;
+  transition: transform 0.3s ease;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  animation: slideUp 0.6s ease forwards;
+  cursor: default;
 }
 
 .feature-card:nth-child(1) { animation-delay: 0.1s; }
 .feature-card:nth-child(2) { animation-delay: 0.3s; }
 .feature-card:nth-child(3) { animation-delay: 0.5s; }
-.feature-card:nth-child(4) { animation-delay: 0.7s; }
-.feature-card:nth-child(5) { animation-delay: 0.9s; }
 
 .feature-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 15px 3px var(--secondary-color);
+  transform: translateY(-12px);
 }
 
 .feature-card i {
-    font-size: 36px;
-    color: var(--secondary-color);
-    margin-bottom: 15px;
+  font-size: 36px;
+  color: var(--secondary);
+  margin-bottom: 15px;
 }
 
 .feature-card h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: var(--light-color);
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .feature-card p {
-    font-size: 15px;
-    color: #bbb;
+  font-size: 15px;
+  color: #bbb;
 }
 
-/* Animasyon tanımı */
-@keyframes fadeSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
-/* Hizmetler Önizleme */
-.services-preview {
-    padding: 80px 0;
-    background-color: var(--primary-color);
+/* =========================================
+   HİZMETLER (SERVICES)
+========================================= */
+.services {
+  padding: 100px 0;
+  background-color: var(--dark);
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
 }
 
-.service-card {
-    background-color: var(--gray-color);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    transition: var(--transition);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+.service-box {
+  background-color: var(--gray);
+  border-radius: var(--radius);
+  padding: 35px 30px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 15px 3px var(--secondary-color);
+.service-box:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 18px 35px rgba(212, 175, 55, 0.5);
+  background-color: #1c1c1c;
 }
 
-.service-icon {
-    background-color: var(--dark-color);
-    padding: 30px;
-    text-align: center;
+.service-box i {
+  font-size: 48px;
+  color: var(--secondary);
+  margin-bottom: 20px;
 }
 
-.service-icon i {
-    font-size: 50px;
-    color: var(--secondary-color);
+.service-box h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: var(--secondary);
 }
 
-.service-card h3 {
-    font-size: 22px;
-    padding: 20px 20px 10px;
-    text-align: center;
-    color: var(--light-color);
+.service-box p {
+  font-size: 15px;
+  color: #bbb;
+  line-height: 1.6;
 }
 
-.service-card p {
-    padding: 0 20px 20px;
-    color: #ccc;
+/* =========================================
+   BUTONLAR
+========================================= */
+.btn {
+  display: inline-block;
+  background-color: var(--secondary);
+  color: var(--dark);
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: none;
+  transition: var(--transition);
+  cursor: pointer;
 }
 
-/* Hakkımızda Sayfası - Ekip Bölümü */
+.btn:hover {
+  background-color: transparent;
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
+}
+
+/* =========================================
+   DEĞERLERİMİZ (VALUES)
+========================================= */
+.values {
+  padding: 80px 0;
+  background-color: var(--dark);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
+}
+
+.value-card {
+  background-color: var(--gray);
+  padding: 30px 25px;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.value-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(212, 175, 55, 0.5);
+}
+
+.value-card i {
+  font-size: 42px;
+  color: var(--secondary);
+  margin-bottom: 20px;
+}
+
+.value-card h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: var(--secondary);
+}
+
+.value-card p {
+  font-size: 15px;
+  color: #ccc;
+  line-height: 1.5;
+}
+
+/* =========================================
+   TAKIM (ABOUT TEAM)
+========================================= */
 .team {
-    padding: 80px 0;
-    background-color: var(--primary-color);
+  padding: 80px 0;
+  background-color: var(--primary);
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .team-grid {
-    display: flex;
-    gap: 25px;
-    overflow-x: auto;
-    padding-bottom: 20px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--secondary-color) transparent;
-}
-
-.team-grid::-webkit-scrollbar {
-    height: 8px;
-}
-
-.team-grid::-webkit-scrollbar-thumb {
-    background-color: var(--secondary-color);
-    border-radius: 10px;
-}
-
-.team-grid::-webkit-scrollbar-track {
-    background: transparent;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
 }
 
 .team-member {
-    flex: 0 0 280px;
-    background-color: var(--gray-color);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: var(--transition);
-    cursor: pointer;
+  background-color: var(--gray);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  cursor: default;
 }
 
 .team-member:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 15px 3px var(--secondary-color);
+  transform: translateY(-12px);
+  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.6);
 }
 
 .member-image {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .member-image img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    transition: var(--transition);
+  width: 100%;
+  height: 220px; /* Küçültüldü */
+  object-fit: cover;
+  border-radius: var(--radius);
+  transition: var(--transition);
 }
 
 .team-member:hover .member-image img {
-    transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .team-member h3 {
-    font-size: 22px;
-    margin: 20px 0 5px;
-    color: var(--light-color);
+  font-size: 22px;
+  margin: 20px 0 5px;
+  color: var(--secondary);
 }
 
 .position {
-    color: var(--secondary-color);
-    margin-bottom: 15px;
+  color: var(--secondary);
+  margin-bottom: 15px;
+  font-weight: 600;
 }
 
 .member-social {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
 }
 
 .member-social a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    background-color: var(--dark-color);
-    border-radius: 50%;
-    margin: 0 5px;
-    transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background-color: var(--dark);
+  border-radius: 50%;
+  margin: 0 5px;
+  transition: var(--transition);
+  color: var(--secondary);
 }
 
 .member-social a:hover {
-    background-color: var(--secondary-color);
-    color: var(--dark-color);
+  background-color: var(--secondary);
+  color: var(--dark);
 }
 
-/* Footer */
+/* =========================================
+   İLETİŞİM (CONTACT)
+========================================= */
+.contact-content {
+  padding: 60px 20px;
+  background-color: var(--dark);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+}
+
+.contact-info, .contact-form {
+  background-color: var(--gray);
+  padding: 35px 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.contact-info h2, .contact-form h2 {
+  font-size: 32px;
+  color: var(--secondary);
+  margin-bottom: 25px;
+}
+
+.contact-info p {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.info-item {
+  display: flex;
+  margin-bottom: 25px;
+  align-items: center;
+}
+
+.info-item i {
+  font-size: 26px;
+  color: var(--secondary);
+  margin-right: 20px;
+  background-color: #1a1a1a;
+  padding: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-item h3 {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: var(--light);
+}
+
+.info-item p {
+  font-size: 15px;
+  color: #bbb;
+  line-height: 1.4;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+  color: var(--light);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #444;
+  background-color: #222;
+  color: var(--light);
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--secondary);
+  outline: none;
+}
+
+.contact-submit-btn {
+  background-color: var(--secondary);
+  color: var(--dark);
+  padding: 14px 30px;
+  border-radius: 30px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-submit-btn:hover {
+  background-color: transparent;
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
 footer {
-    background-color: var(--primary-color);
-    padding: 80px 0 20px;
+  background-color: var(--primary);
+  padding: 80px 0 20px;
+  text-align: center;
 }
 
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    margin-bottom: 40px;
+footer h2 {
+  font-size: 20px;
+  color: var(--secondary);
+  margin-bottom: 10px;
 }
 
-.footer-logo h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: var(--secondary-color);
+footer p {
+  font-size: 14px;
+  color: #aaa;
 }
 
-.footer-logo p {
-    color: #ccc;
-}
+/* =========================================
+   RESPONSİVE (MOBİL İÇİN AYARLAR)
+========================================= */
+@media (max-width: 992px) {
+  header .container {
+    flex-direction: column;
+    gap: 15px;
+  }
 
-.footer-links h3, .footer-contact h3, .footer-social h3 {
-    font-size: 18px;
-    margin-bottom: 20px;
-    position: relative;
-    padding-bottom: 10px;
-    color: var(--light-color);
-}
+  .menu-toggle {
+    display: block;
+  }
 
-.footer-links h3::after, .footer-contact h3::after, .footer-social h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
+  nav {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 75%;
+    height: calc(100vh - 70px);
+    background-color: var(--primary);
+    transition: left 0.4s ease-in-out;
+    padding-top: 40px;
+    box-shadow: 4px 0 10px rgba(0,0,0,0.7);
+    z-index: 1500;
+  }
+
+  nav.active {
     left: 0;
-    width: 50px;
-    height: 2px;
-    background-color: var(--secondary-color);
-}
+  }
 
-.footer-links ul li {
-    margin-bottom: 10px;
-}
+  nav ul {
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 25px;
+  }
 
-.footer-links ul li a {
-    transition: var(--transition);
-    color: var(--light-color);
-}
+  nav ul li a {
+    font-size: 18px;
+    padding: 12px 0;
+    display: block;
+  }
 
-.footer-links ul li a:hover {
-    color: var(--secondary-color);
-    padding-left: 5px;
-}
+  nav ul li a:hover,
+  nav ul li a.active {
+    color: var(--secondary);
+  }
 
-/* Responsive Scrollbars for WebKit */
-::-webkit-scrollbar {
+  /* Hero Bölümü */
+  .hero {
+    height: 60vh;
+    padding: 0 20px;
+  }
+
+  .hero-content h2 {
+    font-size: 28px;
+    animation: slideUp 0.8s ease forwards;
+    opacity: 0;
+    animation-delay: 0.2s;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+    color: #bbb;
+    animation: slideUp 0.8s ease forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 10px 25px;
+  }
+
+  /* Özellikler Bölümü */
+  .features {
+    padding: 50px 15px;
+  }
+
+  .feature-slider {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
+    padding-bottom: 15px;
+  }
+
+  .feature-slider::-webkit-scrollbar {
     height: 8px;
-    width: 8px;
-}
+  }
 
-::-webkit-scrollbar-thumb {
-    background: var(--secondary-color);
+  .feature-slider::-webkit-scrollbar-thumb {
+    background-color: var(--secondary);
     border-radius: 10px;
+  }
+
+  .feature-slider::-webkit-scrollbar-track {
+    background: var(--gray);
+  }
+
+  .feature-card {
+    min-width: 250px;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  }
+
+  /* Hizmetler Önizleme */
+  .services {
+    padding: 50px 15px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  /* Değerlerimiz */
+  .values {
+    padding: 50px 15px;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  /* Takım */
+  .team {
+    padding: 50px 15px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .member-image img {
+    height: 180px; /* Mobilde biraz daha küçültüldü */
+  }
+
+  /* İletişim */
+  .contact-content {
+    padding: 40px 15px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
 }
 
-/* Responsive scroll snap support */
-@supports (scroll-snap-type: x mandatory) {
-    .feature-slider, .team-grid {
-        scroll-padding: 0 15px;
-    }
-}
+/* Daha Küçük Ekranlar için Optimize */
+@media (max-width: 576px) {
+  .hero-content h2 {
+    font-size: 22px;
+  }
 
+  .hero-content p {
+    font-size: 14px;
+  }
 
+  .btn {
+    font-size: 13px;
+    padding: 8px 20px;
+  }
 
-/* -------------------- */
-/*      Mobil CSS       */
-/* -------------------- */
+  .feature-card {
+    min-width: 220px;
+  }
 
-@media (max-width: 768px) {
-    /* Header */
-    header .container {
-        flex-direction: column;
-        gap: 15px;
-        padding: 0 20px;
-    }
+  .team-member h3 {
+    font-size: 18px;
+  }
 
-    nav ul {
-        flex-direction: column;
-        gap: 20px;
-        padding-left: 0;
-    }
+  .team-member .position {
+    font-size: 14px;
+  }
 
-    nav ul li {
-        margin-left: 0;
-    }
+  .service-box h3,
+  .values-grid .value-card h3 {
+    font-size: 20px;
+  }
 
-    nav ul li a {
-        font-size: 18px;
-        padding: 12px 0;
-    }
-
-    /* Menü Toggle */
-    .menu-toggle {
-        display: block;
-    }
-
-    /* Hero */
-    .hero {
-        height: 50vh;
-        padding: 0 20px;
-    }
-
-    .hero-content h2 {
-        font-size: 28px;
-        margin-bottom: 15px;
-    }
-
-    .hero-content p {
-        font-size: 16px;
-        color: #bbb;
-    }
-
-    /* Butonlar */
-    .btn {
-        font-size: 14px;
-        padding: 10px 25px;
-        border-radius: 25px;
-    }
-
-    /* Özellikler - Feature Slider */
-    .feature-slider {
-        gap: 20px;
-        padding-bottom: 15px;
-    }
-
-    .feature-card {
-        flex: 0 0 220px;
-        padding: 20px;
-        font-size: 14px;
-        opacity: 0;
-        animation: fadeSlideIn 0.6s ease forwards;
-    }
-
-    .feature-card:nth-child(1) { animation-delay: 0.1s; }
-    .feature-card:nth-child(2) { animation-delay: 0.3s; }
-    .feature-card:nth-child(3) { animation-delay: 0.5s; }
-    .feature-card:nth-child(4) { animation-delay: 0.7s; }
-    .feature-card:nth-child(5) { animation-delay: 0.9s; }
-
-    /* Hizmetler Grid Mobilde Tek Sütun */
-    .services-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    /* Ekip Bölümü - Team Grid Scroll */
-    .team-grid {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        gap: 20px;
-        padding-bottom: 15px;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .team-member {
-        flex: 0 0 240px;
-        margin: 0;
-        padding: 20px 15px;
-    }
-
-    .team-member h3 {
-        font-size: 18px;
-        margin-top: 15px;
-    }
-
-    .position {
-        font-size: 14px;
-        margin-bottom: 10px;
-    }
-
-    .member-social a {
-        width: 30px;
-        height: 30px;
-        margin: 0 3px;
-    }
-
-    /* Footer */
-    footer {
-        padding: 50px 20px 30px;
-        text-align: center;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    /* Scrollbar mobil uyumlu */
-    .feature-slider::-webkit-scrollbar,
-    .team-grid::-webkit-scrollbar {
-        height: 6px;
-    }
-
-    .feature-slider::-webkit-scrollbar-thumb,
-    .team-grid::-webkit-scrollbar-thumb {
-        background-color: var(--secondary-color);
-        border-radius: 10px;
-    }
+  .service-box p,
+  .values-grid .value-card p {
+    font-size: 14px;
+  }
 }
