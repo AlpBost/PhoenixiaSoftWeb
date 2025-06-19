@@ -252,58 +252,55 @@ nav ul li a.active::after {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-bottom: 50px;
 }
 
 .service-card {
     background-color: var(--gray-color);
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
     transition: var(--transition);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-    min-height: 350px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+    padding: 28px 20px 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-bottom: 20px;
 }
 
 .service-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
 }
 
 .service-icon {
-    background-color: transparent;
-    margin-top: 30px;
-    width: 80px;
-    height: 80px;
-    background-color: var(--dark-color);
+    background: linear-gradient(135deg, #b9962f, #d4af37);
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 0 4px var(--gray-color);
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.6);
 }
 
 .service-icon i {
-    font-size: 36px;
-    color: var(--secondary-color);
+    font-size: 40px;
+    color: var(--dark-color);
 }
 
 .service-card h3 {
     font-size: 22px;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
     text-align: center;
     color: var(--secondary-color);
 }
 
 .service-card p {
-    padding: 0 20px;
+    padding: 0 15px;
     color: #ccc;
     text-align: center;
     font-size: 15px;
