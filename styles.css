@@ -161,18 +161,18 @@ nav ul li a:hover::after, nav ul li a.active::after {
     color: var(--dark-color);
 }
 
-/* Özellikler Bölümü */
+/* Neden Biz Bölümü (features) - Yatay Kaydırmalı Kartlar */
 .features {
     padding: 80px 0;
-    background-color: var(--dark-color);
+    background-color: var(--primary-color);
 }
 
 .section-title {
     text-align: center;
     font-size: 36px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     position: relative;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 .section-title::after {
@@ -187,23 +187,40 @@ nav ul li a:hover::after, nav ul li a.active::after {
 }
 
 .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+}
+
+.feature-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.feature-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.feature-grid::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color);
+    border-radius: 4px;
 }
 
 .feature-card {
+    flex: 0 0 300px; /* Kart genişliği */
     background-color: var(--gray-color);
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: center;
-    transition: var(--transition);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .feature-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.4);
 }
 
 .feature-card i {
@@ -215,10 +232,18 @@ nav ul li a:hover::after, nav ul li a.active::after {
 .feature-card h3 {
     font-size: 22px;
     margin-bottom: 15px;
+    color: var(--secondary-color);
 }
 
 .feature-card p {
     color: #ccc;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Özellikler Bölümü */
+.features-section {
+    /* Eğer farklı özellikler bölümü varsa burası için kullanılabilir */
 }
 
 /* Hizmetler Önizleme */
@@ -376,10 +401,9 @@ footer {
 .social-icons a:hover {
     background-color: var(--secondary-color);
     color: var(--dark-color);
-    transform: scale(1.1);
 }
 
-/* Footer alt yazı */
+/* Footer Altı */
 .footer-bottom {
     text-align: center;
     padding-top: 20px;
@@ -450,13 +474,8 @@ footer {
     padding: 32px;
     border-radius: 16px;
     text-align: left;
-    box-shadow: 0 10px 25px var(--shadow-color, rgba(0,0,0,0.15));
+    box-shadow: 0 10px 25px var(--shadow-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.mission-box:hover, .vision-box:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
 
 .icon-box {
@@ -516,79 +535,6 @@ footer {
     margin-bottom: 15px;
 }
 
-.team {
-    padding: 80px 0;
-    background-color: var(--primary-color);
-}
-
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.team-member {
-    background-color: var(--gray-color);
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: var(--transition);
-}
-
-.team-member:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.member-image {
-    overflow: hidden;
-}
-
-.member-image img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    transition: var(--transition);
-}
-
-.team-member:hover .member-image img {
-    transform: scale(1.1);
-}
-
-.team-member h3 {
-    font-size: 22px;
-    margin: 20px 0 5px;
-}
-
-.position {
-    color: var(--secondary-color);
-    margin-bottom: 15px;
-}
-
-.member-social {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 20px;
-}
-
-.member-social a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    background-color: var(--dark-color);
-    border-radius: 50%;
-    margin: 0 5px;
-    transition: var(--transition);
-}
-
-.member-social a:hover {
-    background-color: var(--secondary-color);
-    color: var(--dark-color);
-}
-
 /* Hizmetler Sayfası */
 .services {
     padding: 80px 0;
@@ -604,35 +550,19 @@ footer {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: var(--transition);
-}
-
-.service-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
 }
 
 .service-item .service-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #1a1a1a; /* Daha yumuşak siyah */
-    padding: 50px;
-    transition: background-color 0.3s ease;
-}
-
-.service-item:hover .service-icon {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
+    padding: 40px;
 }
 
 .service-item .service-icon i {
-    font-size: 65px;
-    color: var(--light-color);
-    transition: color 0.3s ease;
-}
-
-.service-item:hover .service-icon i {
-    color: var(--dark-color);
+    font-size: 60px;
+    color: var(--secondary-color);
 }
 
 .service-content {
@@ -643,7 +573,6 @@ footer {
     font-size: 28px;
     margin-bottom: 15px;
     color: var(--secondary-color);
-    text-shadow: 0 0 5px rgba(212, 175, 55, 0.7);
 }
 
 .service-content p {
@@ -666,7 +595,6 @@ footer {
 .service-features li i {
     color: var(--secondary-color);
     margin-right: 10px;
-    font-size: 20px;
 }
 
 /* Süreç Bölümü */
@@ -710,11 +638,10 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
     margin-right: 30px;
     z-index: 1;
-    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.6);
 }
 
 .step-content {
@@ -722,13 +649,12 @@ footer {
 }
 
 .step-content h3 {
-    font-size: 26px;
+    font-size: 24px;
     margin-bottom: 10px;
 }
 
 .step-content p {
     color: #ccc;
-    font-size: 18px;
 }
 
 /* İletişim Sayfası */
@@ -811,14 +737,11 @@ footer {
     transition: var(--transition);
 }
 
-.form-group input:focus, .form-group textarea:focus,
-.form-group input:hover, .form-group textarea:hover {
+.form-group input:focus, .form-group textarea:focus {
     outline: none;
     border-color: var(--secondary-color);
-    box-shadow: 0 0 8px var(--secondary-color);
 }
 
-/* Harita Bölümü */
 .map {
     padding: 80px 0;
     background-color: var(--primary-color);
@@ -865,7 +788,6 @@ footer {
         background-color: var(--primary-color);
         transition: var(--transition);
         z-index: 999;
-        box-shadow: 4px 0 10px rgba(0,0,0,0.3);
     }
 
     nav.active {
@@ -890,7 +812,7 @@ footer {
         margin-top: 30px; /* Başlık yukarı yapışmasın */
     }
 
-    /* 🔽 Misyon-Vizyon */
+    /* Misyon-Vizyon */
     .mission-vision {
         padding: 40px 15px; /* Daha dar padding */
     }
