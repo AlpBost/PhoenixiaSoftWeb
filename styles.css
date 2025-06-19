@@ -133,30 +133,39 @@ nav ul li a:hover {
 
 .features .section-title {
   text-align: center;
-  font-size: 36px;
-  margin-bottom: 60px;
+  font-size: 32px;
+  margin-bottom: 50px;
   color: var(--secondary);
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--secondary);
+  display: inline-block;
+  padding-bottom: 8px;
 }
 
 .feature-slider {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  gap: 30px; /* Aralar daha geniş */
+  gap: 20px;
   padding-bottom: 20px;
 }
 
 .feature-card {
-  flex: 0 0 260px; /* Küçültüldü */
+  flex: 0 0 280px;
   background-color: var(--gray);
-  padding: 20px;
+  padding: 25px 20px;
   border-radius: var(--radius);
   scroll-snap-align: start;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: var(--shadow);
   opacity: 0;
   animation: slideUp 0.6s ease forwards;
   cursor: default;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .feature-card:nth-child(1) { animation-delay: 0.1s; }
@@ -164,23 +173,27 @@ nav ul li a:hover {
 .feature-card:nth-child(3) { animation-delay: 0.5s; }
 
 .feature-card:hover {
-  transform: translateY(-12px);
+  transform: translateY(-14px);
+  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.6);
 }
 
 .feature-card i {
-  font-size: 36px;
+  font-size: 40px;
   color: var(--secondary);
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
 .feature-card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 22px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  color: var(--secondary);
 }
 
 .feature-card p {
-  font-size: 15px;
-  color: #bbb;
+  font-size: 16px;
+  color: #ddd;
+  line-height: 1.5;
 }
 
 @keyframes slideUp {
@@ -194,48 +207,57 @@ nav ul li a:hover {
 .services {
   padding: 100px 0;
   background-color: var(--dark);
-  max-width: 1100px;
-  margin: 0 auto;
 }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 45px;
 }
 
 .service-box {
   background-color: var(--gray);
   border-radius: var(--radius);
-  padding: 35px 30px;
+  padding: 35px 25px;
   text-align: center;
   box-shadow: var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
 }
 
 .service-box:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 18px 35px rgba(212, 175, 55, 0.5);
-  background-color: #1c1c1c;
+  transform: translateY(-16px);
+  box-shadow: 0 25px 50px rgba(212, 175, 55, 0.7);
+  background-color: #1e1e1e;
 }
 
 .service-box i {
-  font-size: 48px;
+  font-size: 52px;
   color: var(--secondary);
-  margin-bottom: 20px;
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.8));
+  transition: filter 0.3s ease;
+}
+
+.service-box:hover i {
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 1));
 }
 
 .service-box h3 {
   font-size: 24px;
-  margin-bottom: 12px;
   color: var(--secondary);
+  margin-bottom: 6px;
+  font-weight: 700;
 }
 
 .service-box p {
   font-size: 15px;
-  color: #bbb;
+  color: #ccc;
   line-height: 1.6;
+  max-width: 320px;
 }
 
 /* =========================================
@@ -251,7 +273,6 @@ nav ul li a:hover {
   letter-spacing: 1px;
   border: none;
   transition: var(--transition);
-  cursor: pointer;
 }
 
 .btn:hover {
@@ -261,68 +282,48 @@ nav ul li a:hover {
 }
 
 /* =========================================
-   DEĞERLERİMİZ (VALUES)
+   FOOTER
 ========================================= */
-.values {
-  padding: 80px 0;
-  background-color: var(--dark);
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.values-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 35px;
-}
-
-.value-card {
-  background-color: var(--gray);
-  padding: 30px 25px;
-  border-radius: var(--radius);
+footer {
+  background-color: var(--primary);
+  padding: 50px 20px 30px;
   text-align: center;
-  box-shadow: var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: default;
+  box-shadow: 0 -3px 15px rgba(0,0,0,0.5);
+  border-top: 2px solid var(--secondary);
+  position: relative;
+  z-index: 10;
 }
 
-.value-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(212, 175, 55, 0.5);
-}
-
-.value-card i {
-  font-size: 42px;
+footer h2 {
+  font-size: 20px;
   color: var(--secondary);
-  margin-bottom: 20px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
 }
 
-.value-card h3 {
-  font-size: 24px;
-  margin-bottom: 12px;
-  color: var(--secondary);
-}
-
-.value-card p {
-  font-size: 15px;
-  color: #ccc;
-  line-height: 1.5;
+footer p {
+  font-size: 14px;
+  color: #999;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.4;
 }
 
 /* =========================================
-   TAKIM (ABOUT TEAM)
+   EKİBİMİZ
 ========================================= */
 .team {
+  background-color: transparent; /* Siyah arka plan kaldırıldı */
   padding: 80px 0;
-  background-color: var(--primary);
   max-width: 1100px;
   margin: 0 auto;
 }
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 35px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
 }
 
 .team-member {
@@ -332,28 +333,29 @@ nav ul li a:hover {
   text-align: center;
   box-shadow: var(--shadow);
   transition: var(--transition);
-  cursor: default;
+  cursor: pointer;
 }
 
 .team-member:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.6);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
 }
 
 .member-image {
   overflow: hidden;
+  border-radius: var(--radius);
 }
 
 .member-image img {
   width: 100%;
-  height: 220px; /* Küçültüldü */
+  height: 160px !important; /* Küçültüldü */
   object-fit: cover;
   border-radius: var(--radius);
   transition: var(--transition);
 }
 
 .team-member:hover .member-image img {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .team-member h3 {
@@ -365,80 +367,49 @@ nav ul li a:hover {
 .position {
   color: var(--secondary);
   margin-bottom: 15px;
-  font-weight: 600;
-}
-
-.member-social {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 20px;
-}
-
-.member-social a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 35px;
-  height: 35px;
-  background-color: var(--dark);
-  border-radius: 50%;
-  margin: 0 5px;
-  transition: var(--transition);
-  color: var(--secondary);
-}
-
-.member-social a:hover {
-  background-color: var(--secondary);
-  color: var(--dark);
 }
 
 /* =========================================
-   İLETİŞİM (CONTACT)
+   İLETİŞİM BÖLÜMÜ
 ========================================= */
 .contact-content {
-  padding: 60px 20px;
+  padding: 80px 0;
   background-color: var(--dark);
   max-width: 900px;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 45px;
+  gap: 50px;
 }
 
-.contact-info, .contact-form {
-  background-color: var(--gray);
-  padding: 35px 30px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-.contact-info h2, .contact-form h2 {
-  font-size: 32px;
+.contact-info h2,
+.contact-form h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
   color: var(--secondary);
-  margin-bottom: 25px;
 }
 
-.contact-info p {
-  color: #ccc;
-  line-height: 1.6;
+.contact-info > p {
   margin-bottom: 30px;
+  color: #ccc;
 }
 
 .info-item {
   display: flex;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   align-items: center;
 }
 
 .info-item i {
-  font-size: 26px;
+  font-size: 24px;
   color: var(--secondary);
   margin-right: 20px;
-  background-color: #1a1a1a;
-  padding: 12px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--gray);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -446,83 +417,70 @@ nav ul li a:hover {
 }
 
 .info-item h3 {
-  font-weight: 600;
-  font-size: 18px;
-  margin-bottom: 4px;
-  color: var(--light);
+  font-size: 20px;
+  margin-bottom: 5px;
+  color: var(--secondary);
 }
 
 .info-item p {
+  color: #ccc;
   font-size: 15px;
-  color: #bbb;
-  line-height: 1.4;
+}
+
+/* İletişim Formu */
+.form-group {
+  margin-bottom: 20px;
 }
 
 .form-group label {
-  font-weight: 600;
-  margin-bottom: 8px;
   display: block;
-  color: var(--light);
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--secondary);
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 14px 16px;
-  border-radius: 10px;
+  padding: 12px 15px;
+  background-color: var(--gray);
   border: 1px solid #444;
-  background-color: #222;
+  border-radius: 5px;
   color: var(--light);
+  font-family: inherit;
   font-size: 16px;
-  transition: border-color 0.3s ease;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: var(--transition);
+  resize: vertical;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-color: var(--secondary);
   outline: none;
+  border-color: var(--secondary);
 }
 
-.contact-submit-btn {
+.submit-btn {
   background-color: var(--secondary);
   color: var(--dark);
-  padding: 14px 30px;
-  border-radius: 30px;
-  font-weight: 700;
   border: none;
+  padding: 14px 30px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 30px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: var(--transition);
+  margin-top: 15px;
+  display: inline-block;
 }
 
-.contact-submit-btn:hover {
+.submit-btn:hover {
   background-color: transparent;
   color: var(--secondary);
   border: 2px solid var(--secondary);
 }
 
 /* =========================================
-   FOOTER
-========================================= */
-footer {
-  background-color: var(--primary);
-  padding: 80px 0 20px;
-  text-align: center;
-}
-
-footer h2 {
-  font-size: 20px;
-  color: var(--secondary);
-  margin-bottom: 10px;
-}
-
-footer p {
-  font-size: 14px;
-  color: #aaa;
-}
-
-/* =========================================
-   RESPONSİVE (MOBİL İÇİN AYARLAR)
+   Responsive Tasarım
 ========================================= */
 @media (max-width: 992px) {
   header .container {
@@ -562,7 +520,7 @@ footer p {
     padding: 12px 0;
     display: block;
   }
-
+  
   nav ul li a:hover,
   nav ul li a.active {
     color: var(--secondary);
@@ -574,14 +532,14 @@ footer p {
     padding: 0 20px;
   }
 
-  .hero-content h2 {
+  .hero h2 {
     font-size: 28px;
     animation: slideUp 0.8s ease forwards;
     opacity: 0;
     animation-delay: 0.2s;
   }
 
-  .hero-content p {
+  .hero p {
     font-size: 16px;
     color: #bbb;
     animation: slideUp 0.8s ease forwards;
@@ -634,51 +592,63 @@ footer p {
 
   .services-grid {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 35px;
   }
 
-  /* Değerlerimiz */
-  .values {
-    padding: 50px 15px;
+  .service-box {
+    max-width: 350px;
+    margin: 0 auto;
   }
 
-  .values-grid {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-
-  /* Takım */
-  .team {
-    padding: 50px 15px;
-  }
-
+  /* Takım Bölümü */
   .team-grid {
     grid-template-columns: 1fr;
-    gap: 25px;
+  }
+
+  .team-member {
+    max-width: 300px;
+    margin: 0 auto;
   }
 
   .member-image img {
-    height: 180px; /* Mobilde biraz daha küçültüldü */
+    height: 140px !important;
   }
 
-  /* İletişim */
+  /* İletişim Bölümü */
   .contact-content {
-    padding: 40px 15px;
+    padding: 50px 15px;
   }
 
   .contact-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 40px;
+  }
+
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .info-item i {
+    margin-bottom: 10px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 14px;
+  }
+
+  .map {
+    padding: 50px 15px;
   }
 }
 
-/* Daha Küçük Ekranlar için Optimize */
 @media (max-width: 576px) {
-  .hero-content h2 {
+  .hero h2 {
     font-size: 22px;
   }
 
-  .hero-content p {
+  .hero p {
     font-size: 14px;
   }
 
@@ -691,6 +661,14 @@ footer p {
     min-width: 220px;
   }
 
+  .service-box i {
+    font-size: 40px;
+  }
+
+  .service-box h3 {
+    font-size: 20px;
+  }
+
   .team-member h3 {
     font-size: 18px;
   }
@@ -699,13 +677,20 @@ footer p {
     font-size: 14px;
   }
 
-  .service-box h3,
-  .values-grid .value-card h3 {
-    font-size: 20px;
+  .service-box p {
+    font-size: 14px;
   }
 
-  .service-box p,
-  .values-grid .value-card p {
+  .contact-info h2,
+  .contact-form h2 {
+    font-size: 28px;
+  }
+
+  .info-item h3 {
+    font-size: 18px;
+  }
+
+  .info-item p {
     font-size: 14px;
   }
 }
