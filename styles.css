@@ -877,6 +877,30 @@ footer {
         font-size: 14px;
         line-height: 1.5;
     }
+
+    /* Çalışma süreci düzeltmeleri */
+    .process-steps {
+        padding-left: 0;
+    }
+    .process-steps::before {
+        display: none;
+    }
+    .process-step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .step-number {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .step-content h3 {
+        font-size: 20px;
+    }
+    .step-content p {
+        font-size: 15px;
+        padding: 0 10px;
+    }
 }
 
 @media (max-width: 576px) {
