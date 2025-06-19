@@ -230,6 +230,7 @@ nav ul li a:hover::after, nav ul li a.active::after {
 }
 
 .accordion-content {
+    background-color: #000;
     max-height: 0;
     overflow: hidden;
     padding: 0 30px;
