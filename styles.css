@@ -79,7 +79,8 @@ nav ul li a {
     transition: var(--transition);
 }
 
-nav ul li a:hover, nav ul li a.active {
+nav ul li a:hover,
+nav ul li a.active {
     color: var(--secondary-color);
 }
 
@@ -94,7 +95,8 @@ nav ul li a::after {
     transition: var(--transition);
 }
 
-nav ul li a:hover::after, nav ul li a.active::after {
+nav ul li a:hover::after,
+nav ul li a.active::after {
     width: 100%;
 }
 
@@ -108,8 +110,7 @@ nav ul li a:hover::after, nav ul li a.active::after {
 /* Hero Bölümü */
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-        url('https://source.unsplash.com/random/1920x1080/?technology')
-        no-repeat center center/cover;
+        url('https://source.unsplash.com/random/1920x1080/?technology') no-repeat center center/cover;
     height: 80vh;
     display: flex;
     align-items: center;
@@ -243,7 +244,7 @@ nav ul li a:hover::after, nav ul li a.active::after {
     font-size: 16px;
 }
 
-/* Hizmetler Önizleme */
+/* 🚀 Hizmetlerimiz Bölümü - GÜNCELLENDİ */
 .services-preview {
     padding: 80px 0;
     background-color: var(--primary-color);
@@ -258,39 +259,57 @@ nav ul li a:hover::after, nav ul li a.active::after {
 
 .service-card {
     background-color: var(--gray-color);
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
     transition: var(--transition);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 20px;
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
 
 .service-icon {
+    background-color: transparent;
+    margin-top: 30px;
+    width: 80px;
+    height: 80px;
     background-color: var(--dark-color);
-    padding: 30px;
-    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 4px var(--gray-color);
+    margin-bottom: 20px;
 }
 
 .service-icon i {
-    font-size: 50px;
+    font-size: 36px;
     color: var(--secondary-color);
 }
 
 .service-card h3 {
     font-size: 22px;
-    padding: 20px 20px 10px;
+    margin-bottom: 10px;
     text-align: center;
+    color: var(--secondary-color);
 }
 
 .service-card p {
-    padding: 0 20px 20px;
+    padding: 0 20px;
     color: #ccc;
     text-align: center;
+    font-size: 15px;
+    line-height: 1.5;
 }
+
 
 .services-cta {
     text-align: center;
