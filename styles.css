@@ -1,468 +1,624 @@
 :root {
-  --primary: #0a0a0a;
-  --secondary: #d4af37;
-  --light: #f9f9f9;
-  --dark: #111;
-  --gray: #2a2a2a;
-  --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  --radius: 16px;
-  --shadow-light: 0 4px 15px rgba(212, 175, 55, 0.3);
-  --shadow-dark: 0 6px 20px rgba(0, 0, 0, 0.6);
+    --primary-color: #000000; /* Siyah */
+    --secondary-color: #D4AF37; /* Altın Sarısı */
+    --light-color: #f4f4f4;
+    --dark-color: #111;
+    --gray-color: #333;
+    --transition: all 0.3s ease;
+    --border-radius: 12px;
 }
 
+/* Reset ve genel ayarlar */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--dark);
-  color: var(--light);
-  line-height: 1.6;
-  overflow-x: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--light-color);
+    background-color: var(--dark-color);
+    overflow-x: hidden; /* Yatay kaydırma kontrolü */
 }
 
 .container {
-  width: 90%;
-  max-width: 1300px;
-  margin: auto;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-/* Linkler */
 a {
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-  transition: var(--transition);
+    text-decoration: none;
+    color: var(--light-color);
 }
 
-a:hover {
-  color: var(--secondary);
+ul {
+    list-style: none;
+}
+
+.gold-text {
+    color: var(--secondary-color);
 }
 
 /* Header */
 header {
-  background-color: var(--primary);
-  padding: 20px 0;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1100;
-  box-shadow: var(--shadow-dark);
-  transition: var(--transition);
+    background-color: var(--primary-color);
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo h1 {
-  font-size: 30px;
-  color: var(--secondary);
-  letter-spacing: 1.2px;
-  font-weight: 700;
-  user-select: none;
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
 }
 
 nav ul {
-  display: flex;
-  gap: 32px;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 30px;
 }
 
 nav ul li a {
-  font-weight: 600;
-  padding: 8px 0;
-  position: relative;
-  font-size: 18px;
-  letter-spacing: 0.02em;
+    font-weight: 500;
+    padding: 10px 0;
+    position: relative;
+    transition: var(--transition);
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: var(--secondary-color);
 }
 
 nav ul li a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 3px;
-  bottom: -5px;
-  left: 0;
-  background-color: var(--secondary);
-  transition: width 0.3s ease;
-  border-radius: 2px;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: var(--transition);
 }
 
-nav ul li a:hover::after {
-  width: 100%;
+nav ul li a:hover::after, nav ul li a.active::after {
+    width: 100%;
 }
 
-nav ul li a:hover {
-  color: var(--secondary);
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--light-color);
 }
 
-/* Hero Section */
+/* Hero Bölümü */
 .hero {
-  background: url('https://source.unsplash.com/random/1920x1080?code') center/cover no-repeat;
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding-top: 80px;
-  user-select: none;
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://source.unsplash.com/random/1920x1080/?technology') no-repeat center center/cover;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 80px;
 }
 
-.hero h2 {
-  font-size: 54px;
-  font-weight: 700;
-  margin-bottom: 22px;
-  color: var(--secondary);
-  text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
-  animation: fadeSlideDown 1s ease forwards;
-  opacity: 0;
+.hero-content {
+    max-width: 750px;
+    margin: 0 auto;
 }
 
-.hero p {
-  font-size: 22px;
-  max-width: 720px;
-  margin: 0 auto;
-  color: #ccc;
-  line-height: 1.5;
-  animation: fadeSlideUp 1.3s ease forwards;
-  opacity: 0;
+.hero-content h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    line-height: 1.2;
 }
 
-@keyframes fadeSlideDown {
-  0% {opacity: 0; transform: translateY(-30px);}
-  100% {opacity: 1; transform: translateY(0);}
+.hero-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #ccc;
 }
 
-@keyframes fadeSlideUp {
-  0% {opacity: 0; transform: translateY(30px);}
-  100% {opacity: 1; transform: translateY(0);}
-}
-
-/* FEATURES SECTION */
-.features {
-  padding: 100px 0;
-  background-color: var(--primary);
-}
-
-.features .section-title {
-  text-align: center;
-  font-size: 38px;
-  margin-bottom: 60px;
-  color: var(--secondary);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-}
-
-/* Yatay scroll yapılabilen özellik kartları */
-.feature-slider {
-  display: flex;
-  gap: 28px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 22px;
-  -webkit-overflow-scrolling: touch;
-  user-select: none;
-}
-
-/* Scrollbar gizle, ama mobilde görünsün */
-.feature-slider::-webkit-scrollbar {
-  height: 10px;
-}
-
-.feature-slider::-webkit-scrollbar-thumb {
-  background-color: var(--secondary);
-  border-radius: 10px;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
-}
-
-.feature-slider::-webkit-scrollbar-thumb:hover {
-  opacity: 0.9;
-}
-
-.feature-slider::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-/* Her bir özellik kartı */
-.feature-card {
-  scroll-snap-align: start;
-  flex: 0 0 320px;
-  background-color: var(--gray);
-  border-radius: var(--radius);
-  padding: 32px 28px;
-  box-shadow: var(--shadow-light);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
-  cursor: default;
-  opacity: 0;
-  animation: fadeInUp 0.5s ease forwards;
-}
-
-.feature-card:nth-child(1) { animation-delay: 0.15s; }
-.feature-card:nth-child(2) { animation-delay: 0.35s; }
-.feature-card:nth-child(3) { animation-delay: 0.55s; }
-.feature-card:nth-child(4) { animation-delay: 0.75s; }
-
-.feature-card:hover {
-  transform: translateY(-14px) scale(1.05);
-  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.7);
-}
-
-.feature-card i {
-  font-size: 42px;
-  color: var(--secondary);
-  margin-bottom: 22px;
-  transition: color 0.3s ease;
-}
-
-.feature-card h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 14px;
-  color: var(--light);
-  transition: color 0.3s ease;
-}
-
-.feature-card p {
-  font-size: 16px;
-  line-height: 1.5;
-  color: #ddd;
-}
-
-/* FadeIn animasyon */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* SERVICES SECTION */
-.services {
-  padding: 100px 0;
-  background-color: var(--dark);
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
-}
-
-.service-box {
-  background-color: var(--gray);
-  border-radius: var(--radius);
-  padding: 30px 28px;
-  text-align: center;
-  box-shadow: var(--shadow-light);
-  transition: var(--transition);
-  cursor: default;
-}
-
-.service-box:hover {
-  background-color: #222222;
-  box-shadow: 0 25px 50px rgba(212, 175, 55, 0.6);
-  transform: translateY(-12px) scale(1.04);
-}
-
-.service-box i {
-  font-size: 44px;
-  color: var(--secondary);
-  margin-bottom: 22px;
-  transition: color 0.3s ease;
-}
-
-.service-box h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 14px;
-  color: var(--light);
-}
-
-.service-box p {
-  font-size: 15px;
-  color: #ccc;
-  line-height: 1.6;
-}
-
-/* BUTTON */
 .btn {
-  display: inline-block;
-  background-color: var(--secondary);
-  color: var(--dark);
-  padding: 14px 32px;
-  border-radius: 40px;
-  font-weight: 700;
-  letter-spacing: 1.1px;
-  border: none;
-  cursor: pointer;
-  transition: var(--transition);
-  user-select: none;
-  box-shadow: 0 6px 15px rgba(212, 175, 55, 0.5);
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    border: 2px solid var(--secondary-color);
 }
 
 .btn:hover {
-  background-color: transparent;
-  color: var(--secondary);
-  border: 2px solid var(--secondary);
-  box-shadow: 0 0 30px var(--secondary);
+    background-color: transparent;
+    color: var(--secondary-color);
 }
 
-/* FOOTER */
+.btn-light {
+    background-color: transparent;
+    color: var(--light-color);
+    border: 2px solid var(--light-color);
+}
+
+.btn-light:hover {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+}
+
+/* Özellikler Bölümü (Features) */
+.features {
+    padding: 80px 0;
+    background-color: var(--dark-color);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 60px;
+    position: relative;
+    padding-bottom: 20px;
+    color: var(--light-color);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--secondary-color);
+}
+
+/* ===============================
+   ÖZELLİK KUTULARI (Features Cards) 
+   Arka arkaya yatay kaydırılabilir kartlar
+================================= */
+.feature-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 25px;
+    padding-bottom: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary-color) transparent;
+}
+
+.feature-slider::-webkit-scrollbar {
+    height: 8px;
+}
+
+.feature-slider::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+}
+
+.feature-slider::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.feature-card {
+    flex: 0 0 280px;
+    background-color: var(--gray-color);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    scroll-snap-align: start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeSlideIn 0.6s ease forwards;
+}
+
+.feature-card:nth-child(1) { animation-delay: 0.1s; }
+.feature-card:nth-child(2) { animation-delay: 0.3s; }
+.feature-card:nth-child(3) { animation-delay: 0.5s; }
+.feature-card:nth-child(4) { animation-delay: 0.7s; }
+.feature-card:nth-child(5) { animation-delay: 0.9s; }
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px 3px var(--secondary-color);
+}
+
+.feature-card i {
+    font-size: 36px;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--light-color);
+}
+
+.feature-card p {
+    font-size: 15px;
+    color: #bbb;
+}
+
+/* Animasyon tanımı */
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hizmetler Önizleme */
+.services-preview {
+    padding: 80px 0;
+    background-color: var(--primary-color);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.service-card {
+    background-color: var(--gray-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px 3px var(--secondary-color);
+}
+
+.service-icon {
+    background-color: var(--dark-color);
+    padding: 30px;
+    text-align: center;
+}
+
+.service-icon i {
+    font-size: 50px;
+    color: var(--secondary-color);
+}
+
+.service-card h3 {
+    font-size: 22px;
+    padding: 20px 20px 10px;
+    text-align: center;
+    color: var(--light-color);
+}
+
+.service-card p {
+    padding: 0 20px 20px;
+    color: #ccc;
+}
+
+/* Hakkımızda Sayfası - Ekip Bölümü */
+.team {
+    padding: 80px 0;
+    background-color: var(--primary-color);
+}
+
+.team-grid {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary-color) transparent;
+}
+
+.team-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.team-grid::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+}
+
+.team-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.team-member {
+    flex: 0 0 280px;
+    background-color: var(--gray-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px 3px var(--secondary-color);
+}
+
+.member-image {
+    overflow: hidden;
+}
+
+.member-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.team-member:hover .member-image img {
+    transform: scale(1.1);
+}
+
+.team-member h3 {
+    font-size: 22px;
+    margin: 20px 0 5px;
+    color: var(--light-color);
+}
+
+.position {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.member-social {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.member-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: var(--dark-color);
+    border-radius: 50%;
+    margin: 0 5px;
+    transition: var(--transition);
+}
+
+.member-social a:hover {
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+}
+
+/* Footer */
 footer {
-  background-color: var(--primary);
-  padding: 90px 0 40px;
-  text-align: center;
-  box-shadow: var(--shadow-dark);
+    background-color: var(--primary-color);
+    padding: 80px 0 20px;
 }
 
-footer h2 {
-  font-size: 22px;
-  color: var(--secondary);
-  margin-bottom: 14px;
-  font-weight: 600;
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
 }
 
-footer p {
-  font-size: 14px;
-  color: #999;
-  letter-spacing: 0.03em;
+.footer-logo h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
 }
 
-/* Scrollbar styles genel */
+.footer-logo p {
+    color: #ccc;
+}
+
+.footer-links h3, .footer-contact h3, .footer-social h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+    color: var(--light-color);
+}
+
+.footer-links h3::after, .footer-contact h3::after, .footer-social h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--secondary-color);
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    transition: var(--transition);
+    color: var(--light-color);
+}
+
+.footer-links ul li a:hover {
+    color: var(--secondary-color);
+    padding-left: 5px;
+}
+
+/* Responsive Scrollbars for WebKit */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+    height: 8px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--secondary);
-  border-radius: 10px;
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
+    background: var(--secondary-color);
+    border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  opacity: 0.7;
+/* Responsive scroll snap support */
+@supports (scroll-snap-type: x mandatory) {
+    .feature-slider, .team-grid {
+        scroll-padding: 0 15px;
+    }
 }
 
-::-webkit-scrollbar-track {
-  background: var(--gray);
-}
 
+
+/* -------------------- */
+/*      Mobil CSS       */
+/* -------------------- */
 
 @media (max-width: 768px) {
+    /* Header */
+    header .container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 0 20px;
+    }
 
-  /* Header düzeni */
-  header .container {
-    flex-direction: column;
-    gap: 12px;
-    padding: 0 15px;
-  }
+    nav ul {
+        flex-direction: column;
+        gap: 20px;
+        padding-left: 0;
+    }
 
-  nav ul {
-    flex-direction: column;
-    gap: 18px;
-    padding-left: 0;
-  }
+    nav ul li {
+        margin-left: 0;
+    }
 
-  nav ul li a {
-    font-size: 20px;
-    padding: 10px 0;
-  }
+    nav ul li a {
+        font-size: 18px;
+        padding: 12px 0;
+    }
 
-  /* Hero bölümü yüksekliği ve yazı boyutu küçültüldü */
-  .hero {
-    height: 50vh;
-    padding: 60px 15px 30px;
-  }
+    /* Menü Toggle */
+    .menu-toggle {
+        display: block;
+    }
 
-  .hero h2 {
-    font-size: 32px;
-    margin-bottom: 12px;
-  }
+    /* Hero */
+    .hero {
+        height: 50vh;
+        padding: 0 20px;
+    }
 
-  .hero p {
-    font-size: 16px;
-    max-width: 100%;
-  }
+    .hero-content h2 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
 
-  /* Feature kartlar yatay scroll için daha küçük ve daraltıldı */
-  .feature-slider {
-    gap: 16px;
-    padding-bottom: 16px;
-  }
+    .hero-content p {
+        font-size: 16px;
+        color: #bbb;
+    }
 
-  .feature-card {
-    flex: 0 0 260px;
-    padding: 20px 18px;
-    border-radius: 14px;
-  }
+    /* Butonlar */
+    .btn {
+        font-size: 14px;
+        padding: 10px 25px;
+        border-radius: 25px;
+    }
 
-  .feature-card i {
-    font-size: 36px;
-    margin-bottom: 16px;
-  }
+    /* Özellikler - Feature Slider */
+    .feature-slider {
+        gap: 20px;
+        padding-bottom: 15px;
+    }
 
-  .feature-card h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
+    .feature-card {
+        flex: 0 0 220px;
+        padding: 20px;
+        font-size: 14px;
+        opacity: 0;
+        animation: fadeSlideIn 0.6s ease forwards;
+    }
 
-  .feature-card p {
-    font-size: 14px;
-  }
+    .feature-card:nth-child(1) { animation-delay: 0.1s; }
+    .feature-card:nth-child(2) { animation-delay: 0.3s; }
+    .feature-card:nth-child(3) { animation-delay: 0.5s; }
+    .feature-card:nth-child(4) { animation-delay: 0.7s; }
+    .feature-card:nth-child(5) { animation-delay: 0.9s; }
 
-  /* Hizmetler (services) grid tek sütun ve boşluk azaltıldı */
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
+    /* Hizmetler Grid Mobilde Tek Sütun */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
 
-  .service-box {
-    padding: 24px 20px;
-    border-radius: 14px;
-  }
+    /* Ekip Bölümü - Team Grid Scroll */
+    .team-grid {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 20px;
+        padding-bottom: 15px;
+        -webkit-overflow-scrolling: touch;
+    }
 
-  .service-box i {
-    font-size: 38px;
-    margin-bottom: 18px;
-  }
+    .team-member {
+        flex: 0 0 240px;
+        margin: 0;
+        padding: 20px 15px;
+    }
 
-  .service-box h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
+    .team-member h3 {
+        font-size: 18px;
+        margin-top: 15px;
+    }
 
-  .service-box p {
-    font-size: 13px;
-  }
+    .position {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
 
-  /* Buton boyutu küçültüldü */
-  .btn {
-    padding: 12px 28px;
-    font-size: 16px;
-  }
+    .member-social a {
+        width: 30px;
+        height: 30px;
+        margin: 0 3px;
+    }
 
-  /* Footer padding küçültüldü */
-  footer {
-    padding: 60px 15px 30px;
-  }
+    /* Footer */
+    footer {
+        padding: 50px 20px 30px;
+        text-align: center;
+    }
 
-  footer h2 {
-    font-size: 18px;
-  }
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 
-  footer p {
-    font-size: 13px;
-  }
+    /* Scrollbar mobil uyumlu */
+    .feature-slider::-webkit-scrollbar,
+    .team-grid::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .feature-slider::-webkit-scrollbar-thumb,
+    .team-grid::-webkit-scrollbar-thumb {
+        background-color: var(--secondary-color);
+        border-radius: 10px;
+    }
 }
