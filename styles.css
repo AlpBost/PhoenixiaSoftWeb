@@ -1,4 +1,3 @@
-/* Ana Stiller */
 :root {
     --primary-color: #000000; /* Siyah */
     --secondary-color: #D4AF37; /* Altın/Hardal Sarısı */
@@ -161,90 +160,110 @@ nav ul li a:hover::after, nav ul li a.active::after {
     color: var(--dark-color);
 }
 
-/* Neden Biz Bölümü (features) - Yatay Kaydırmalı Kartlar */
+/* Neden Biz Bölümü - Kaydırmalı Kartlar */
 .features {
     padding: 80px 0;
     background-color: var(--primary-color);
+    color: var(--light-color);
 }
 
 .section-title {
     text-align: center;
-    font-size: 36px;
-    margin-bottom: 40px;
+    font-size: 38px;
+    margin-bottom: 50px;
+    font-weight: 700;
     position: relative;
-    padding-bottom: 10px;
+}
+
+.section-title .gold-text {
+    color: var(--secondary-color);
 }
 
 .section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
+    content: "";
+    display: block;
+    width: 100px;
     height: 3px;
     background-color: var(--secondary-color);
+    margin: 15px auto 0;
+    border-radius: 2px;
 }
 
-.feature-grid {
+/* Kaydırma alanı */
+.feature-slider {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     overflow-x: auto;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary-color) transparent;
 }
 
-.feature-grid::-webkit-scrollbar {
+.feature-slider::-webkit-scrollbar {
     height: 8px;
 }
 
-.feature-grid::-webkit-scrollbar-track {
+.feature-slider::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.feature-grid::-webkit-scrollbar-thumb {
+.feature-slider::-webkit-scrollbar-thumb {
     background-color: var(--secondary-color);
     border-radius: 4px;
 }
 
+/* Her kart */
 .feature-card {
-    flex: 0 0 300px; /* Kart genişliği */
+    flex: 0 0 280px;
     background-color: var(--gray-color);
-    padding: 30px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
+    border-radius: 18px;
+    padding: 30px 25px 35px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .feature-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
 }
 
-.feature-card i {
-    font-size: 40px;
-    color: var(--secondary-color);
+/* İkon kutusu */
+.icon-container {
+    width: 80px;
+    height: 80px;
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
     margin-bottom: 20px;
 }
 
+/* Başlık */
 .feature-card h3 {
     font-size: 22px;
+    font-weight: 700;
     margin-bottom: 15px;
     color: var(--secondary-color);
 }
 
+/* Açıklama */
 .feature-card p {
-    color: #ccc;
     font-size: 16px;
+    color: #ddd;
     line-height: 1.5;
 }
 
 /* Özellikler Bölümü */
-.features-section {
-    /* Eğer farklı özellikler bölümü varsa burası için kullanılabilir */
-}
+/* Burada artık feature-slider kullanıyoruz, eski feature-grid kaldırıldı */
 
 /* Hizmetler Önizleme */
 .services-preview {
@@ -297,242 +316,6 @@ nav ul li a:hover::after, nav ul li a.active::after {
 
 .services-cta {
     text-align: center;
-}
-
-/* CTA Bölümü */
-.cta {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://source.unsplash.com/random/1920x1080/?meeting') no-repeat center center/cover;
-    padding: 100px 0;
-    text-align: center;
-}
-
-.cta h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.cta p {
-    font-size: 18px;
-    margin-bottom: 30px;
-    color: #ccc;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Footer */
-footer {
-    background-color: var(--primary-color);
-    padding: 80px 0 20px;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    margin-bottom: 40px;
-}
-
-.footer-logo h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-}
-
-.footer-logo p {
-    color: #ccc;
-}
-
-.footer-links h3, .footer-contact h3, .footer-social h3 {
-    font-size: 18px;
-    margin-bottom: 20px;
-    position: relative;
-    padding-bottom: 10px;
-}
-
-.footer-links h3::after, .footer-contact h3::after, .footer-social h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50px;
-    height: 2px;
-    background-color: var(--secondary-color);
-}
-
-.footer-links ul li {
-    margin-bottom: 10px;
-}
-
-.footer-links ul li a {
-    transition: var(--transition);
-}
-
-.footer-links ul li a:hover {
-    color: var(--secondary-color);
-    padding-left: 5px;
-}
-
-.footer-contact p {
-    margin-bottom: 10px;
-    color: #ccc;
-}
-
-.footer-contact p i {
-    color: var(--secondary-color);
-    margin-right: 10px;
-}
-
-.social-icons {
-    display: flex;
-}
-
-.social-icons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: var(--gray-color);
-    border-radius: 50%;
-    margin-right: 10px;
-    transition: var(--transition);
-}
-
-.social-icons a:hover {
-    background-color: var(--secondary-color);
-    color: var(--dark-color);
-}
-
-/* Footer Altı */
-.footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid var(--gray-color);
-}
-
-/* Sayfa Başlık Bölümü */
-.page-header {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://source.unsplash.com/random/1920x1080/?technology') no-repeat center center/cover;
-    padding: 150px 0 80px;
-    text-align: center;
-}
-
-.page-header h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-}
-
-.page-header p {
-    font-size: 20px;
-    color: #ccc;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-/* Hakkımızda Sayfası */
-.about-content {
-    padding: 80px 0;
-    background-color: var(--dark-color);
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: center;
-}
-
-.about-image img {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.about-text h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.about-text p {
-    margin-bottom: 15px;
-    color: #ccc;
-}
-
-.mission-vision {
-    padding: 80px 0;
-    background-color: var(--primary-color);
-}
-
-.mission-vision-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
-
-.mission-box, .vision-box {
-    background-color: var(--gray-color);
-    padding: 32px;
-    border-radius: 16px;
-    text-align: left;
-    box-shadow: 0 10px 25px var(--shadow-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.icon-box {
-    width: 80px;
-    height: 80px;
-    background-color: var(--dark-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-}
-
-.icon-box i {
-    font-size: 30px;
-    color: var(--secondary-color);
-}
-
-.mission-box h3, .vision-box h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-}
-
-.values {
-    padding: 80px 0;
-    background-color: var(--dark-color);
-}
-
-.values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.value-card {
-    background-color: var(--gray-color);
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    transition: var(--transition);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.value-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.value-card i {
-    font-size: 40px;
-    color: var(--secondary-color);
-    margin-bottom: 20px;
-}
-
-.value-card h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
 }
 
 /* Hizmetler Sayfası */
