@@ -52,6 +52,11 @@ header {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+
 header .container {
     display: flex;
     justify-content: space-between;
