@@ -917,9 +917,11 @@ footer {
     .footer-content {
         grid-template-columns: 1fr;
     }
-}
-@media (max-width: 576px) {
-    .service-content h2 {
-        font-size: 22px;
+    .page-header h1 {
+        font-size: 28px;
+    }
+    .page-header p {
+        font-size: 16px;
     }
 }
+
