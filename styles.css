@@ -198,22 +198,23 @@ nav ul li a:hover::after, nav ul li a.active::after {
     background-color: var(--secondary-color);
 }
 
-/* ❌ Artık slider olmadığı için bu kısım sadeleştirildi */
 .slider-wrapper {
     padding-bottom: 10px;
 }
 
-/* ✅ Kartlar alt alta dizilecek */
 .slider {
-    display: block; /* flex yerine block */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* kartları yatayda ortalar */
+    gap: 20px;
 }
 
-/* ✅ Kartlar tam genişlikte ve aralıklı olacak */
+/* Feature card yapısını optimize ettik */
 .feature-card {
     width: 100%;
-    margin-bottom: 30px;
+    max-width: 500px; /* çok geniş olmasın */
     background-color: var(--gray-color);
-    padding: 30px;
+    padding: 25px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
