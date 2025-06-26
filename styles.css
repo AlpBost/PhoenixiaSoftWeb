@@ -830,6 +830,20 @@ footer {
     .service-item .service-icon {
         padding: 30px;
     }
+
+    /* Feature kartları dikey ve ortalanmış */
+    .slider {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .feature-card {
+        width: 100%;
+        max-width: 400px;
+        padding: 25px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -854,10 +868,21 @@ footer {
         font-size: 26px;
         margin-top: 30px;
     }
-    .feature-card {
-        flex: 0 0 230px;
-        padding: 25px;
+
+    /* Feature kartları dikey ve ortalanmış */
+    .slider {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
+
+    .feature-card {
+        width: 100%;
+        max-width: 380px;
+        padding: 20px;
+    }
+
     .mission-vision {
         padding: 40px 15px;
     }
@@ -879,7 +904,6 @@ footer {
         line-height: 1.5;
     }
 
-    /* Çalışma süreci düzeltmeleri */
     .process-steps {
         padding-left: 0;
     }
@@ -911,10 +935,21 @@ footer {
         padding: 10px 20px;
         font-size: 14px;
     }
+
+    /* Feature kartları dikey ve ortalanmış */
+    .slider {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
     .feature-card {
-        flex: 0 0 80%;
+        width: 90%;
+        max-width: 350px;
         padding: 20px;
     }
+
     .footer-content {
         grid-template-columns: 1fr;
     }
@@ -925,4 +960,5 @@ footer {
         font-size: 16px;
     }
 }
+
 
