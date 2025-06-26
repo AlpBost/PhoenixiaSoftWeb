@@ -198,32 +198,26 @@ nav ul li a:hover::after, nav ul li a.active::after {
     background-color: var(--secondary-color);
 }
 
+/* ❌ Artık slider olmadığı için bu kısım sadeleştirildi */
 .slider-wrapper {
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
     padding-bottom: 10px;
-    scroll-snap-type: x mandatory;
 }
 
-.slider-wrapper::-webkit-scrollbar {
-    display: none;
-}
-
+/* ✅ Kartlar alt alta dizilecek */
 .slider {
-    display: flex;
-    gap: 30px;
+    display: block; /* flex yerine block */
 }
 
+/* ✅ Kartlar tam genişlikte ve aralıklı olacak */
 .feature-card {
-    flex: 0 0 280px;
+    width: 100%;
+    margin-bottom: 30px;
     background-color: var(--gray-color);
     padding: 30px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    scroll-snap-align: start;
 }
 
 .feature-card:hover {
@@ -247,6 +241,7 @@ nav ul li a:hover::after, nav ul li a.active::after {
     color: #ccc;
     font-size: 16px;
 }
+
 
 /* Hizmetler Önizleme */
 .services-preview {
